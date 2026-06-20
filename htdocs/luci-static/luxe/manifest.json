@@ -1,0 +1,25 @@
+{
+"name":"LuxeOs",
+"short_name":"LuxeOs",
+"description":"Theme LuxeOs for OpenWRT.",
+"start_url":"/",
+"scope": "/",
+"orientation":"portrait",
+"display":"standalone",
+"prompt_message":"LuxeOs",
+"icons":[
+{
+"src":"images/icon.png",
+"sizes":"144x144",
+"type":"image/png"
+},
+{
+"src":"images/icon.png",
+"sizes":"192x192",
+"type":"image/png"
+}
+],
+"gcm_sender_id":"524223308106",
+"gcm_user_visible_only":true,
+"status":"ok"
+}

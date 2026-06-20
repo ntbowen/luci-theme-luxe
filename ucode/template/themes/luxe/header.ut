@@ -1,0 +1,291 @@
+{%
+	let fs = require("fs");
+	let uci_mod = require("uci");
+	let uci = (type(uci_mod) == 'object') ? uci_mod.cursor() : null;
+	let binfo = (type(boardinfo) == 'object') ? boardinfo : {};
+	let hn_file = null;
+	if (fs && type(fs.readfile) == 'function') {
+		try { hn_file = fs.readfile("/proc/sys/kernel/hostname"); } catch(e) {}
+	}
+	let hostname = (type(hn_file) == 'string' && length(hn_file) > 0) ? replace(hn_file, "\n", "") : (binfo.hostname || "LuxeOs");
+	let release = (type(binfo.release) == 'object') ? binfo.release : {};
+	let luciversion = release.revision || "1.0.1";
+	let ctx = (type(dispatcher) == 'object' && type(dispatcher.context) == 'object') ? dispatcher.context : {};
+	let node = (type(ctx.dispatched) == 'object') ? ctx.dispatched : {};
+	let patharr = (type(ctx.path) == 'array') ? ctx.path : [];
+	let path = length(patharr) > 0 ? join("-", patharr) : "";
+	let authsession = ctx.authsession;
+	let lang = (type(dispatcher) == 'object' && dispatcher.lang) ? dispatcher.lang : "en";
+	let tr = (type(_) == 'function') ? _ : function(s){ return s; };
+	function striptags(s) { return type(s) == 'string' ? replace(s, /<[^>]+>/g, '') : (s || ''); }
+
+	let mode = 'normal';
+	let ui_style = 'luxe';
+	let has_ui_style = '0';
+	let luxe_mode = 'normal';
+	let glass_mode = 'glass';
+	let neon_mode = 'neon';
+	let neo_mode = 'neo-system';
+	let neox_mode = 'neox-system';
+	let glaze_mode = 'glaze-system';
+	let onyx_mode = 'onyx-system';
+	let force_scheme = '';
+	let glass_blur_radius = '16';
+	let glass_shadow = '1';
+	let show_hostname = '1';
+	let enable_navbar = '0';
+	let nav_icon_count = 6;
+	let primary_color = '';
+	let enable_nav_slider = '0';
+	let nav_position = 'bottom';
+	let enable_custom_nav = '0';
+	let nav_links_raw = [];
+	let conf = null;
+
+	if (uci && type(uci.get_all) == 'function') {
+		try { conf = uci.get_all('luxe'); } catch(e) {}
+	}
+	
+	if (type(conf) == 'object') {
+		for (let k in conf) {
+			let s = conf[k];
+			if (type(s) == 'object' && s['.type'] == 'global') {
+				if (s.mode !== undefined) mode = s.mode;
+				if (s.ui_style !== undefined) { ui_style = s.ui_style; has_ui_style = '1'; }
+				if (s.luxe_mode !== undefined) luxe_mode = s.luxe_mode;
+				if (s.glass_mode !== undefined) glass_mode = s.glass_mode;
+				if (s.neon_mode !== undefined) neon_mode = s.neon_mode;
+				if (s.neo_mode !== undefined) neo_mode = s.neo_mode;
+				if (s.neox_mode !== undefined) neox_mode = s.neox_mode;
+				if (s.glaze_mode !== undefined) glaze_mode = s.glaze_mode;
+				if (s.onyx_mode !== undefined) onyx_mode = s.onyx_mode;
+				if (s.glass_blur_radius !== undefined) glass_blur_radius = s.glass_blur_radius;
+				if (s.glass_shadow !== undefined) glass_shadow = s.glass_shadow;
+				if (s.show_hostname !== undefined) show_hostname = s.show_hostname;
+				if (s.enable_navbar !== undefined) enable_navbar = s.enable_navbar;
+				if (s.nav_icon_count !== undefined) nav_icon_count = int(s.nav_icon_count);
+				if (s.primary_color !== undefined) primary_color = s.primary_color;
+				if (s.enable_nav_slider !== undefined) enable_nav_slider = s.enable_nav_slider;
+				if (s.nav_position !== undefined) nav_position = s.nav_position;
+				if (s.enable_custom_nav !== undefined) enable_custom_nav = s.enable_custom_nav;
+				if (s.nav_links !== undefined) nav_links_raw = (type(s.nav_links) == 'array') ? s.nav_links : [ s.nav_links ];
+				break;
+			}
+		}
+	}
+
+	if (has_ui_style != '1') {
+		if (mode == 'normal' || mode == 'light' || mode == 'dark') { ui_style = 'luxe'; luxe_mode = mode; }
+		else if (mode == 'glass' || mode == 'glass-dark' || mode == 'glass-crystal') { ui_style = 'glass'; glass_mode = mode; }
+		else if (mode == 'neon' || mode == 'rgb') { ui_style = 'neon'; neon_mode = mode; }
+		else if (mode == 'glaze' || mode == 'glaze-light' || mode == 'glaze-dark' || mode == 'glaze-system') { ui_style = 'glaze'; glaze_mode = (mode == 'glaze-light' || mode == 'glaze-dark' || mode == 'glaze-system') ? mode : 'glaze-system'; }
+		else if (mode == 'onyx' || mode == 'onyx-light' || mode == 'onyx-dark' || mode == 'onyx-system') { ui_style = 'onyx'; onyx_mode = (mode == 'onyx-light' || mode == 'onyx-dark' || mode == 'onyx-system') ? mode : 'onyx-system'; }
+	}
+
+	if (has_ui_style == '1') {
+		if (ui_style == 'luxe') { mode = luxe_mode; force_scheme = (luxe_mode == 'light') ? 'light' : ((luxe_mode == 'dark') ? 'dark' : 'system'); }
+		else if (ui_style == 'glass') { mode = glass_mode; }
+		else if (ui_style == 'neon') { mode = neon_mode; }
+		else if (ui_style == 'neo') { mode = 'neo'; force_scheme = (neo_mode == 'neo-light') ? 'light' : ((neo_mode == 'neo-dark') ? 'dark' : 'system'); }
+		else if (ui_style == 'neox') { mode = 'neox'; force_scheme = (neox_mode == 'neox-light') ? 'light' : ((neox_mode == 'neox-dark') ? 'dark' : 'system'); }
+		else if (ui_style == 'glaze') { mode = 'glaze'; force_scheme = (glaze_mode == 'glaze-light') ? 'light' : ((glaze_mode == 'glaze-dark') ? 'dark' : 'system'); }
+		else if (ui_style == 'onyx') { mode = 'onyx'; force_scheme = (onyx_mode == 'onyx-light') ? 'light' : ((onyx_mode == 'onyx-dark') ? 'dark' : 'system'); }
+	}
+
+	if (mode == 'neo-light') { mode = 'neo'; force_scheme = 'light'; }
+	if (mode == 'neo-dark') { mode = 'neo'; force_scheme = 'dark'; }
+	if (mode == 'neo-system') { mode = 'neo'; force_scheme = 'system'; }
+	if (mode == 'neox-light') { mode = 'neox'; force_scheme = 'light'; }
+	if (mode == 'neox-dark') { mode = 'neox'; force_scheme = 'dark'; }
+	if (mode == 'neox-system') { mode = 'neox'; force_scheme = 'system'; }
+	if (mode == 'glaze' && force_scheme == '') force_scheme = 'system';
+	if (mode == 'glaze-light') { mode = 'glaze'; force_scheme = 'light'; }
+	if (mode == 'glaze-dark') { mode = 'glaze'; force_scheme = 'dark'; }
+	if (mode == 'glaze-system') { mode = 'glaze'; force_scheme = 'system'; }
+	if (mode == 'onyx' && force_scheme == '') force_scheme = 'system';
+	if (mode == 'onyx-light') { mode = 'onyx'; force_scheme = 'light'; }
+	if (mode == 'onyx-dark') { mode = 'onyx'; force_scheme = 'dark'; }
+	if (mode == 'onyx-system') { mode = 'onyx'; force_scheme = 'system'; }
+	
+	if (force_scheme == '') {
+		if (mode == 'light') force_scheme = 'light';
+		else if (mode == 'dark') force_scheme = 'dark';
+		else if (mode == 'normal') force_scheme = 'system';
+	}
+
+	function cleanhex(c) {
+		if (type(c) != 'string' || c == '') return '';
+		let h = replace(c, "#", "");
+		return (length(h) == 6) ? ('#' + h) : '';
+	}
+
+	function hexrgb(c) {
+		let h = replace(c, "#", "");
+		if (length(h) != 6) return '';
+		let r = int("0x" + substr(h, 0, 2));
+		let g = int("0x" + substr(h, 2, 2));
+		let b = int("0x" + substr(h, 4, 2));
+		return (r >= 0 && g >= 0 && b >= 0) ? (r + ', ' + g + ', ' + b) : '';
+	}
+
+	if (nav_position != 'right') nav_position = 'bottom';
+	primary_color = cleanhex(primary_color);
+	let primary_color_value = primary_color;
+	let primary_rgb = hexrgb(primary_color_value);
+	let primary_color_enabled = (primary_color_value != '') ? '1' : '0';
+	let body_style = '';
+	
+	if (mode == 'glass' || mode == 'glass-dark') {
+		if (glass_blur_radius == '0') {
+			body_style = body_style + '--glass-blur-radius:none;--glass-dark-blur-radius:none;';
+		} else {
+			body_style = body_style + '--glass-blur-radius:blur(' + glass_blur_radius + 'px);--glass-dark-blur-radius:blur(' + glass_blur_radius + 'px) saturate(110%);';
+		}
+		if (glass_shadow == '0') {
+			body_style = body_style + '--glass-shadow-out:none;--glass-shadow-in:none;';
+		}
+	}
+	
+	if (primary_color_enabled == '1') {
+		if (primary_color_value != '') body_style = body_style + '--luxe-primary-color:' + primary_color_value + ';';
+		if (primary_rgb != '') {
+			body_style = body_style + '--luxe-primary-rgb:' + primary_rgb + ';--neon-rgb:' + primary_rgb + ';';
+		}
+	}
+
+	let m = (type(media) == 'string') ? media : '';
+	let res = (type(resource) == 'string') ? resource : '';
+	let getUrl = (type(url) == 'function') ? url : function(p) { return "/cgi-bin/luci/" + p; };
+-%}
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,viewport-fit=cover" />
+	<link rel="manifest" href="{{ m }}/manifest.json">
+	<title>{{ striptags(hostname + ((node && node.title) ? ' - ' + tr(node.title) : '')) }} - LuCI</title>
+	<meta name="format-detection" content="telephone=no, email=no"/>
+	<meta name="color-scheme" content="light dark">
+	<meta name="x5-fullscreen" content="true">
+	<meta name="full-screen" content="yes">
+	<meta name="x5-page-mode" content="app">
+	<meta name="browsermode" content="application">
+	<meta name="msapplication-tap-highlight" content="no">
+	<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+	<meta name="theme-color" media="(prefers-color-scheme: light)" content="white">
+	<meta name="theme-color" media="(prefers-color-scheme: dark)" content="black">
+	<meta name="application-name" content="{{ striptags(hostname) }} - LuCI">
+	<meta name="apple-mobile-web-app-title" content="{{ striptags(hostname) }} - LuCI">
+	<meta name="msapplication-TileImage" content="{{ m }}/images/icon.svg"/>
+	<link rel="icon" href="{{ m }}/images/icon.svg" sizes="192x192">
+	<link rel="apple-touch-icon" sizes="192x192" href="{{ m }}/images/icon.svg">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-touch-fullscreen" content="yes" /> 
+	<meta name="msapplication-TileColor" content="#09c">
+	
+	<link rel="stylesheet" href="{{ m }}/css/luxe.css?v={{ luciversion }}">
+	<script src="{{ m }}/js/jquery.min.js?v=3.5.1"></script>
+	<link rel="shortcut icon" href="{{ m }}/favicon.ico">
+	{% if (node && node.css): %}
+	<link rel="stylesheet" href="{{ res }}/{{ node.css }}">
+	{% endif %}
+	<script src="{{ getUrl('admin/translations', lang) }}?v=1.0.1"></script>
+	<script src="{{ res }}/cbi.js?v=1.0.1"></script>
+	<script src="{{ res }}/luci.js?v={{ luciversion }}"></script>
+	<script src="{{ m }}/js/luxe.js?v=1.0.1"></script>
+	
+	{% if (css): %}
+	<style title="text/css">
+		{{ css }}
+	</style>
+	{% endif %}
+</head>
+<body class="lang_{{ lang }} {% if (authsession): %}logged-in{% endif %} {% if (path != ""): %}node-{{ path }}{% else %}node-main-login{% endif %}" data-page="{{ path }}" data-theme="{{ mode }}" data-mode="{{ mode }}" data-ui-style="{{ ui_style }}" data-force-scheme="{{ force_scheme }}" data-auto-theme="{% if (mode == 'normal'): %}1{% else %}0{% endif %}" data-show-hostname="{{ show_hostname }}" data-enable-navbar="{{ enable_navbar }}" data-navbar-enabled="{{ enable_navbar }}" data-nav-position="{{ nav_position }}" data-primary-color="{{ primary_color_enabled }}" data-primary-color-value="{{ primary_color_value }}"{% if (body_style != ''): %} style="{{ body_style }}"{% endif %}>
+	
+	<header>
+		<div class="fill">
+			<div class="container">
+				<span class="showSide"></span>
+				<a class="brand" href="#" id="h-brand" data-hostname="{{ striptags(hostname) }}"></a>
+				<div class="status" id="indicators"></div>
+				<a href="/cgi-bin/luci/admin/logout" class="logout-link"><img src="{{ m }}/images/out.svg"></a>
+			</div>
+		</div>
+	</header>
+
+	<nav class="navbar nav-position-{{ nav_position }}{% if (enable_nav_slider == '1'): %} nav-slider-active{% endif %}" id="floating-navbar" data-nav-slider="{{ enable_nav_slider }}" data-nav-position="{{ nav_position }}" data-enable-navbar="{{ enable_navbar }}" data-navbar-enabled="{{ enable_navbar }}">
+		{% if (enable_nav_slider == '1'): %}
+		<button class="nav-arrow left" id="nav-arrow-left">&#10094;</button>
+		<div class="nav-slider-wrapper" id="nav-slider-wrapper">
+			<div class="nav-track" id="nav-track">
+		{% endif %}
+
+		{%
+			let defaults = [
+				"Home|admin/status/overview|home.png",
+				"Network|admin/network/network|interface.png",
+				"TinyFM|admin/system/tinyfm|tinyfm.png",
+				"TTYD|admin/services/ttyd|terminal.png",
+				"OpenClash|admin/services/openclash|openclash.png",
+				"Net Monitor|admin/status/netmonitor|netmon.png",
+				"Nikki|admin/services/nikki|nikki.png",
+				"DroidNet|admin/modem/andromodem|droidnet.png",
+				"FusionTunx|admin/services/fusiontunx|insomclash.png",
+				"ModemInfo|admin/modem/3ginfo-lite|modem.png",
+				"Passwall|admin/services/passwall|passwall.png",
+				"Mikhom|admin/modem/modemdata|mikhom.png",
+				"AdGuardHome|admin/services/AdGuardHome|adguard.png",
+				"Tailscale|admin/vpn/tailscale|tailscale.png",
+				"Neko|admin/services/neko|neko.png",
+				"RakitanManager|admin/modem/rakitanmanager|rakitanmanager.png",
+				"AT Command|admin/modem/luci-app-sms-tool-js/sendat|at.png",
+				"Logout|admin/logout|logout.png"
+			];
+			let nav_items = [];
+			let source_list = (enable_custom_nav == '1' && length(nav_links_raw) > 0) ? nav_links_raw : defaults;
+			for (let idx, val in source_list) {
+				let parts = split(val, "|");
+				if (length(parts) >= 3) {
+					push(nav_items, { alt: parts[0], url: getUrl(parts[1]), icon: m + "/navbar/" + parts[2] });
+				}
+			}
+		%}
+
+		{% for (let i, item in nav_items): %}
+			{% if (enable_nav_slider != '1' && i >= nav_icon_count) break; %}
+		<a href="{{ item.url }}" class="nav-link">
+			<img src="{{ item.icon }}" alt="{{ item.alt }}" />
+		</a>
+		{% endfor %}
+
+		{% if (enable_nav_slider == '1'): %}
+			</div>
+		</div>
+		<button class="nav-arrow right" id="nav-arrow-right">&#10095;</button>
+		{% endif %}
+	</nav>
+
+	<div class="main">
+		<div style="" class="loading">
+			<span>
+				<div class="loading-img"></div>
+				{{ tr('Collecting data...') }}
+			</span>
+		</div>
+		<div class="main-left" id="mainmenu" style="display:none"></div>
+		<div class="main-right">
+			<div class="modemenu-buttons" style="display:none">
+				<ul id="modemenu"></ul>
+			</div>
+			<div class="darkMask"></div>
+			<div id="maincontent">
+				<div class="container">
+					<noscript>
+						<div class="alert-message warning">
+							<h4>{{ tr('JavaScript required!') }}</h4>
+							<p>{{ tr('You must enable JavaScript in your browser or LuCI will not work properly.') }}</p>
+						</div>
+					</noscript>
+
+					<div id="tabmenu" style="display:none"></div>

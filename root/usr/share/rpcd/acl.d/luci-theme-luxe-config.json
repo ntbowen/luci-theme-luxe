@@ -1,0 +1,19 @@
+{
+	"luci-theme-luxe-config": {
+		"description": "Grant UCI and File access for luci-theme-luxe-config",
+		"read": {
+			"uci": [ "luxe" ],
+			"file": {
+				"/www/luci-static/luxe/image/": [ "list" ],
+				"/www/luci-static/luxe/image/*": [ "read" ]
+			}
+		},
+		"write": {
+			"uci": [ "luxe" ],
+			"file": {
+				"/www/luci-static/luxe/image/": [ "write" ],
+				"/www/luci-static/luxe/image/*": [ "write" ]
+			}
+		}
+	}
+}

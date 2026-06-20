@@ -1,0 +1,14 @@
+{
+	"admin/system/luxe-config": {
+		"title": "LuxeOs Config",
+		"order": 90,
+		"action": {
+			"type": "view",
+			"path": "luxe-config" 
+		},
+		"depends": {
+			"acl": [ "luci-theme-luxe-config" ],
+			"uci": { "luxe": true }
+		}
+	}
+}

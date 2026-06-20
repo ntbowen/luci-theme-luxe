@@ -1,0 +1,59 @@
+{%
+    let fs = require("fs");
+    let binfo = (type(boardinfo) == 'object') ? boardinfo : {};
+    let hn_file = fs.readfile("/proc/sys/kernel/hostname");
+    let hostname = (type(hn_file) == 'string' && length(hn_file) > 0) ? replace(hn_file, "\n", "") : (binfo.hostname || "OpenWrt");
+    
+    let e = (type(env) == 'object') ? env : {};
+    let req_uri = e.REQUEST_URI || '';
+    let user = (type(duser) == 'string') ? duser : '';
+    let is_failed = (type(fuser) != 'undefined' && fuser) ? true : false;
+    let m = (type(media) == 'string') ? media : '';
+-%}
+<!DOCTYPE html>
+<html lang="en" class="luxeos-auth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ hostname }}</title>
+    <link rel="stylesheet" href="{{ m }}/css/luxe.css?v=1.0.1">
+    <link rel="shortcut icon" href="{{ m }}/favicon.ico">
+</head>
+<body class="luxeos liquid">
+    <div class="theme-toggle">
+        <button class="theme-btn" id="b" type="button">LIQUID</button>
+    </div>
+
+    <form method="post" action="{{ req_uri }}">
+        {% if (is_failed): %}
+        <div class="alert-message" id="a">
+            Invalid username and/or password! Please try again.
+        </div>
+        {% endif %}
+
+        <div class="login_form_container">
+            <div class="login_form">
+                <h2 id="hostname" data-text="{{ hostname }}">{{ hostname }}</h2>
+
+                <div class="date-time">
+                    <span id="d"></span> | <span id="t"></span>
+                </div>
+
+                <div class="input_group">
+                    <input class="input_text" type="text" name="luci_username" placeholder="Username" value="{{ user }}" required autofocus>
+                </div>
+
+                <div class="input_group">
+                    <input class="input_text" type="password" name="luci_password" placeholder="Password" required>
+                </div>
+
+                <input type="submit" value="LOGIN">
+
+                <div class="footer"></div>
+            </div>
+        </div>
+    </form>
+
+    <script src="{{ m }}/js/luxe.js?v=1.0.1"></script>
+</body>
+</html>
