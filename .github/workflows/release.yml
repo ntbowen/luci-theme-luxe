@@ -1,0 +1,166 @@
+name: Release Theme Luxe Os
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+env:
+  PACKAGE_NAME: luci-theme-luxe
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  get-version:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 1
+          ref: ${{ github.ref_name }}
+
+      - name: Extract version
+        id: version
+        run: |
+          set -euo pipefail
+          VERSION=$(sed -n 's/^[[:space:]]*PKG_VERSION[[:space:]]*:=[[:space:]]*//p' Makefile | head -n 1 | tr -d '[:space:]')
+          test -n "$VERSION"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "New Version: ${VERSION}"
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v3
+        with:
+          tag_name: "v${{ steps.version.outputs.version }}"
+          generate_release_notes: true
+          draft: false
+          name: "Luxe v${{ steps.version.outputs.version }}"
+          body: |
+            ## Luxe v${{ steps.version.outputs.version }}
+
+            Rilis ini menyediakan paket **${{ env.PACKAGE_NAME }}** untuk OpenWrt 23.05, 24.10, dan 25.12.
+
+            ---
+
+            ### Paket yang Tersedia
+            - **OpenWrt 23.05 / 24.10**: IPK
+            - **OpenWrt 25.12**: APK
+            - **Arsitektur**: all
+
+            ---
+
+            ### Instalasi OpenWrt 23.05 / 24.10
+            ```bash
+            opkg install ./${{ env.PACKAGE_NAME }}*.ipk
+            ```
+
+            ### Instalasi OpenWrt 25.12
+            ```bash
+            apk add --allow-untrusted ./${{ env.PACKAGE_NAME }}*.apk
+            ```
+
+            ---
+
+            ### Feedback dan Dukungan
+            Jika menemukan masalah, silakan buka issue di repository ini:
+            https://github.com/${{ github.repository }}/issues
+
+  release:
+    name: Release ${{ matrix.branch }}
+    needs: get-version
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: write
+    continue-on-error: false
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        include:
+          - arch: x86_64
+            branch: openwrt-24.10
+            package_format: ipk
+          - arch: x86_64
+            branch: openwrt-25.12
+            package_format: apk
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 1
+
+      - name: Set up build environment
+        run: |
+          set -euo pipefail
+          mkdir -p "feeds/${{ env.PACKAGE_NAME }}" artifacts
+          rsync -a --delete --exclude='.git/' --exclude='feeds/' --exclude='artifacts/' --exclude='release-artifacts/' ./ "feeds/${{ env.PACKAGE_NAME }}/"
+          if grep -qE '^[[:space:]]*PKG_NAME[[:space:]]*:=' "feeds/${{ env.PACKAGE_NAME }}/Makefile"; then
+            sed -i -E 's/^[[:space:]]*PKG_NAME[[:space:]]*:=.*/PKG_NAME:=${{ env.PACKAGE_NAME }}/' "feeds/${{ env.PACKAGE_NAME }}/Makefile"
+          else
+            printf '\nPKG_NAME:=${{ env.PACKAGE_NAME }}\n' >> "feeds/${{ env.PACKAGE_NAME }}/Makefile"
+          fi
+
+      - name: Build package
+        uses: openwrt/gh-action-sdk@main
+        env:
+          ARCH: ${{ matrix.arch }}-${{ matrix.branch }}
+          ARTIFACTS_DIR: ${{ github.workspace }}/artifacts
+          FEED_DIR: ${{ github.workspace }}/feeds
+          PACKAGES: ${{ env.PACKAGE_NAME }}
+          NO_REFRESH_CHECK: true
+
+      - name: List built packages
+        run: |
+          set -euo pipefail
+          find "${{ github.workspace }}/artifacts" -type f \( -name "${{ env.PACKAGE_NAME }}*.ipk" -o -name "${{ env.PACKAGE_NAME }}*.apk" \) | sort
+
+      - name: Prepare release artifacts
+        run: |
+          set -euo pipefail
+          mkdir -p "${{ github.workspace }}/release-artifacts"
+          PACKAGE_FILE=$(find "${{ github.workspace }}/artifacts" -type f -name "${{ env.PACKAGE_NAME }}*.${{ matrix.package_format }}" | sort | head -n 1)
+          test -n "$PACKAGE_FILE"
+          cp "$PACKAGE_FILE" "${{ github.workspace }}/release-artifacts/"
+          ls -la "${{ github.workspace }}/release-artifacts/"
+
+      - name: Upload release artifacts
+        uses: softprops/action-gh-release@v3
+        with:
+          tag_name: "v${{ needs.get-version.outputs.version }}"
+          files: |
+            ${{ github.workspace }}/release-artifacts/*
+          overwrite_files: true
+          fail_on_unmatched_files: true
+
+  cleanup-workflows:
+    name: Cleanup workflow runs
+    needs:
+      - get-version
+      - release
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      contents: read
+    steps:
+      - name: Auto delete old workflow runs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh run list --repo "${{ github.repository }}" --workflow "${{ github.workflow }}" --limit 100 --json databaseId --jq '.[2:][].databaseId' | while read -r RUN_ID; do
+            if [ -n "$RUN_ID" ]; then
+              gh run delete "$RUN_ID" --repo "${{ github.repository }}" || true
+            fi
+          done
