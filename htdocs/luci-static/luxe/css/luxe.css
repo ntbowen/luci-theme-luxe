@@ -1,9 +1,9 @@
 /**
  * LuxeOs is a HTML5 theme for LuCI. It is based on luci-theme-material and luci-theme-neobird
  * 
- *  Theme Concept Neumorphism | Glassmorphism | Neo-Brutalism | Simple | Neon | Rgb | Glass-Gradient
+ *  Theme Ui/Ux Concept Neumorphism | Glassmorphism | Neo-Brutalism | Simple | Neon | Rgb | Glass-Gradient
  *
- *  Indowrt ( indonesian Openwrt Community )
+ *  20 Juni 2026 | Openwrt Comunity Indonesia
  *
  *  luci-theme-LuxeOs
  *      Copyright 2026 xidz_x | de-quenx
@@ -21,9 +21,9 @@
  *      Copyright 2015 Lutty Yang <lutty@wcan.in>
  *
  *  Licensed to the public under the Apache License 2.0
- */
+ */ 
 
-/* luxe-theme */
+/* luxe-1 */
 :root,
 [data-theme="normal"],
 body[data-mode="normal"][data-theme="light"] {
@@ -1609,41 +1609,17 @@ img[src*="/luci-static/resources/icons/signal-none.png"] { background-image: url
 
 img[src*="/luci-static/resources/icons/port_up"],
 img[src*="/luci-static/resources/icons/port_down"],
-#wan4_i img[src*="/luci-static/resources/icons/ethernet.png"],
-#wan6_i img[src*="/luci-static/resources/icons/ethernet.png"],
 img[src*="/luci-static/resources/icons/ethernet.png"],
-#wan4_i img[src*="/luci-static/resources/icons/ethernet_disabled.png"],
-#wan6_i img[src*="/luci-static/resources/icons/ethernet_disabled.png"],
 img[src*="/luci-static/resources/icons/ethernet_disabled.png"],
-#wan4_i img[src*="/luci-static/resources/icons/switch.png"],
-#wan6_i img[src*="/luci-static/resources/icons/switch.png"],
 img[src*="/luci-static/resources/icons/switch.png"],
-#wan4_i img[src*="/luci-static/resources/icons/switch_disabled.png"],
-#wan6_i img[src*="/luci-static/resources/icons/switch_disabled.png"],
 img[src*="/luci-static/resources/icons/switch_disabled.png"],
-#wan4_i img[src*="/luci-static/resources/icons/wifi.png"],
-#wan6_i img[src*="/luci-static/resources/icons/wifi.png"],
 img[src*="/luci-static/resources/icons/wifi.png"],
-#wan4_i img[src*="/luci-static/resources/icons/wifi_disabled.png"],
-#wan6_i img[src*="/luci-static/resources/icons/wifi_disabled.png"],
 img[src*="/luci-static/resources/icons/wifi_disabled.png"],
-#wan4_i img[src*="/luci-static/resources/icons/vlan.png"],
-#wan6_i img[src*="/luci-static/resources/icons/vlan.png"],
 img[src*="/luci-static/resources/icons/vlan.png"],
-#wan4_i img[src*="/luci-static/resources/icons/vlan_disabled.png"],
-#wan6_i img[src*="/luci-static/resources/icons/vlan_disabled.png"],
 img[src*="/luci-static/resources/icons/vlan_disabled.png"],
-#wan4_i img[src*="/luci-static/resources/icons/bridge.png"],
-#wan6_i img[src*="/luci-static/resources/icons/bridge.png"],
 img[src*="/luci-static/resources/icons/bridge.png"],
-#wan4_i img[src*="/luci-static/resources/icons/bridge_disabled.png"],
-#wan6_i img[src*="/luci-static/resources/icons/bridge_disabled.png"],
 img[src*="/luci-static/resources/icons/bridge_disabled.png"],
-#wan4_i img[src*="/luci-static/resources/icons/tunnel.png"],
-#wan6_i img[src*="/luci-static/resources/icons/tunnel.png"],
 img[src*="/luci-static/resources/icons/tunnel.png"],
-#wan4_i img[src*="/luci-static/resources/icons/tunnel_disabled.png"],
-#wan6_i img[src*="/luci-static/resources/icons/tunnel_disabled.png"],
 img[src*="/luci-static/resources/icons/tunnel_disabled.png"] {
   background-size: 32px 32px;
   height: 32px;
@@ -1737,14 +1713,14 @@ img[src*="/luci-static/resources/icons/loading.gif"] {
 }
 
 .ifacebox-body img {
-  background-size: 20px 20px;
-  width: 20px !important;
-  height: 20px !important;
-  padding: 0 0 0 20px !important;
-}
-
-.ifacebox-head {
-  border-radius: 4px 4px 0 0;
+  background-size: 18px 18px !important;
+  height: 18px !important;
+  width: 0 !important;
+  padding: 0 0 0 18px !important;
+  margin: 0 2px !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  flex-shrink: 0 !important;
 }
 
 img[src*="/luci-static/resources/cbi/add.gif"],
@@ -1830,39 +1806,33 @@ div {
   background: rgba(124, 131, 253, 0.35);
 }
 
-html {
+html, body {
   margin: 0px;
   padding: 0px;
   height: 100%;
-  font-family: -apple-system, "Microsoft Yahei" !important;
+  font-family: system-ui, -apple-system, "Microsoft Yahei", Helvetica, Arial, sans-serif !important;
   font-size: 0.92rem;
   line-height: 150%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  color: var(--textColor);
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-  overflow-y: hidden;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  background-color: transparent;
-  color-scheme: dark light;
+}
+
+html {
+  background-color: transparent !important;
 }
 
 body {
-  margin: 0px;
-  padding: 0px;
-  height: 100%;
-  min-height: 100vh;
-  min-height: 100dvh;
-  font-family: -apple-system, "Microsoft Yahei" !important;
-  font-size: 0.92rem;
-  line-height: 150%;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
   background-color: var(--bg);
-  color: var(--textColor);
+}
+
+html {
+  overflow-y: hidden;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
 }
 
 a {
@@ -2135,7 +2105,7 @@ small {
   box-shadow: 0 0px 4px rgb(0 0 0 / 8%);
   border-radius: 0 16px 16px 0;
   border-right: 1px solid transparent;
-  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), width 0.45s cubic-bezier(0.4, 0, 0.2, 1), left 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), width 0.35s cubic-bezier(0.25, 1, 0.5, 1), left 0.35s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.35s cubic-bezier(0.25, 1, 0.5, 1);
   will-change: transform, opacity;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
@@ -2310,10 +2280,11 @@ span[data-indicator="uci-changes"] {
 .alert,
 .alert-message {
   font-weight: bold;
-  margin-bottom: 0.8rem;
-  padding: 0.65rem 1rem;
+  margin-bottom: 0.5rem;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.88rem;
   border: var(--sectionBorder) !important;
-  border-radius: 14px !important;
+  border-radius: 10px !important;
   color: var(--textColor) !important;
   background-color: var(--sectionbgColor) !important;
   box-shadow: var(--sectionShaddow);
@@ -2688,6 +2659,13 @@ div.cbi-section {
   padding: 0;
   box-shadow: none;
   border: none;
+  overflow: visible !important;
+}
+
+.modal .cbi-section,
+.modal [data-tab-title],
+.modal .cbi-section-node {
+  overflow: visible !important;
 }
 
 .cbi-modal .cbi-tabmenu {
@@ -3040,7 +3018,7 @@ td > table > tbody > tr > td,
     width: 20px;
   }
 }
-/* luxe-1 */
+/* luxe-2 */
 [data-page="admin-status-iptables"] .right {
   margin-bottom: 10px !important;
   margin-top: 10px !important;
@@ -3222,9 +3200,26 @@ td > table > tbody > tr > td,
 
 .cbi-value-field .cbi-dropdown,
 .cbi-value-field .cbi-input-select,
-.cbi-value input[type="text"],
-.cbi-value input[type="password"] {
+.cbi-value input[type="text"] {
   width: 100%;
+}
+
+.cbi-value-field input[type="password"] {
+  display: inline-block !important;
+  width: calc(100% - 50px) !important;
+  vertical-align: middle !important;
+  margin-right: 4px !important;
+}
+
+.cbi-value-field input[type="password"] + .cbi-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 42px !important;
+  min-width: 42px !important;
+  vertical-align: middle !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 #cbi-firewall-zone .cbi-input-select,
@@ -3308,68 +3303,6 @@ td > table > tbody > tr > td,
 .td.cbi-section-actions > * > form {
   display: inline-flex;
   margin: 0;
-}
-
-@media screen and (min-width: 769px) {
-  body[data-page*="openclash"] #maincontent .cbi-section-table,
-  body[data-page*="nikki"] #maincontent .cbi-section-table,
-  body[data-page*="passwall"] #maincontent .cbi-section-table,
-  body[data-page*="fusiontunx"] #maincontent .cbi-section-table,
-  body[data-page*="openclash"] #maincontent .table,
-  body[data-page*="nikki"] #maincontent .table,
-  body[data-page*="passwall"] #maincontent .table,
-  body[data-page*="fusiontunx"] #maincontent .table {
-    display: table !important;
-    width: 100% !important;
-    table-layout: auto !important;
-  }
-  body[data-page*="openclash"] #maincontent .cbi-section-table .tr,
-  body[data-page*="nikki"] #maincontent .cbi-section-table .tr,
-  body[data-page*="passwall"] #maincontent .cbi-section-table .tr,
-  body[data-page*="fusiontunx"] #maincontent .cbi-section-table .tr,
-  body[data-page*="openclash"] #maincontent .table .tr,
-  body[data-page*="nikki"] #maincontent .table .tr,
-  body[data-page*="passwall"] #maincontent .table .tr,
-  body[data-page*="fusiontunx"] #maincontent .table .tr {
-    display: table-row !important;
-  }
-  body[data-page*="openclash"] #maincontent .cbi-section-table .td,
-  body[data-page*="openclash"] #maincontent .cbi-section-table .th,
-  body[data-page*="nikki"] #maincontent .cbi-section-table .td,
-  body[data-page*="nikki"] #maincontent .cbi-section-table .th,
-  body[data-page*="passwall"] #maincontent .cbi-section-table .td,
-  body[data-page*="passwall"] #maincontent .cbi-section-table .th,
-  body[data-page*="fusiontunx"] #maincontent .cbi-section-table .td,
-  body[data-page*="fusiontunx"] #maincontent .cbi-section-table .th,
-  body[data-page*="openclash"] #maincontent .table .td,
-  body[data-page*="openclash"] #maincontent .table .th,
-  body[data-page*="nikki"] #maincontent .table .td,
-  body[data-page*="nikki"] #maincontent .table .th,
-  body[data-page*="passwall"] #maincontent .table .td,
-  body[data-page*="passwall"] #maincontent .table .th,
-  body[data-page*="fusiontunx"] #maincontent .table .td,
-  body[data-page*="fusiontunx"] #maincontent .table .th {
-    display: table-cell !important;
-    width: auto !important;
-    vertical-align: middle !important;
-    white-space: nowrap !important;
-  }
-  body[data-page*="openclash"] #maincontent .td form,
-  body[data-page*="nikki"] #maincontent .td form,
-  body[data-page*="passwall"] #maincontent .td form,
-  body[data-page*="fusiontunx"] #maincontent .td form,
-  body[data-page*="openclash"] #maincontent .td .btn,
-  body[data-page*="nikki"] #maincontent .td .btn,
-  body[data-page*="passwall"] #maincontent .td .btn,
-  body[data-page*="fusiontunx"] #maincontent .td .btn,
-  body[data-page*="openclash"] #maincontent .td .cbi-button,
-  body[data-page*="nikki"] #maincontent .td .cbi-button,
-  body[data-page*="passwall"] #maincontent .td .cbi-button,
-  body[data-page*="fusiontunx"] #maincontent .td .cbi-button {
-    display: inline-block !important;
-    margin: 0 3px !important;
-    width: auto !important;
-  }
 }
 
 .cbi-dynlist {
@@ -3581,7 +3514,7 @@ td > table > tbody > tr > td,
   width: 100% !important;
   min-width: 100% !important;
   max-width: 100% !important;
-  max-height: 200px !important;
+  max-height: none !important;
   background: var(--inputbgColor) !important;
   text-align: left !important;
   left: -1px !important;
@@ -3590,11 +3523,17 @@ td > table > tbody > tr > td,
   border: var(--inputBorder) !important;
   border-radius: 12px !important;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2) !important;
-  overflow-x: hidden !important;
-  overflow-y: auto !important;
+  overflow: visible !important;
   padding: 7px 0 !important;
   margin: 0 !important;
   transform: none !important;
+  scrollbar-width: none !important;
+}
+
+.cbi-dropdown[open] > ul.dropdown::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
 .cbi-dropdown > ul > li[display],
@@ -3744,11 +3683,18 @@ td > table > tbody > tr > td,
   right: 10000px;
   bottom: 0;
   left: -10000px;
-  overflow-y: scroll;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
   transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 0;
   background: rgba(0, 0, 0, 0.7);
   -webkit-overflow-scrolling: touch;
+  scrollbar-width: none !important;
+}
+
+#modal_overlay::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
 }
 
 .modal {
@@ -3757,23 +3703,22 @@ td > table > tbody > tr > td,
   flex-wrap: wrap;
   width: 96%;
   min-width: 270px;
-  max-width: 800px;
+  max-width: 500px !important;
   min-height: 32px;
-  max-height: 80vh;
+  max-height: none !important;
   margin: auto;
-  padding: 1rem;
-  overflow-x: hidden;
-  overflow-y: auto;
+  padding: 0.8rem 1rem !important;
+  overflow: visible !important;
   border-radius: 14px !important;
   background: var(--modelBackground);
-  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 16%), 0 0 2px 0 rgb(0 0 0 / 12%);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15) !important;
   border: var(--sectionBorder);
 }
 
 .modal > * {
   line-height: normal;
   flex-basis: 100%;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.25em !important;
   max-width: 100%;
 }
 
@@ -3846,24 +3791,23 @@ body.modal-overlay-active #modal_overlay {
 }
 
 body.modal-overlay-active #modal_overlay > .modal {
+  display: block !important;
   margin: auto;
   transform: translateY(0);
-  max-height: 75vh;
-  overflow-y: auto;
+  max-height: none !important;
+  overflow: visible !important;
 }
 
 .spinning {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  min-height: 24px;
-  padding-left: 40px !important;
+  position: relative !important;
+  min-height: 24px !important;
+  padding-left: 44px !important;
 }
 
 .spinning::before {
   position: absolute;
   top: 50%;
-  left: 0.85em;
+  left: 12px;
   width: 20px;
   height: 20px;
   content: "";
@@ -3874,6 +3818,7 @@ body.modal-overlay-active #modal_overlay > .modal {
   transform: translateY(-50%);
   pointer-events: none;
 }
+
 
 .hidden {
   display: none;
@@ -3931,14 +3876,19 @@ body.modal-overlay-active #modal_overlay > .modal {
 
 .ifacebadge {
   display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   gap: 0.2rem;
-  padding: 0.5rem 0.8rem;
+  padding: 0.3rem 0.5rem;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 td > .ifacebadge,
 .td > .ifacebadge {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   background-color: var(--activeColor);
   color: var(--bttextColor);
   border-radius: 8px;
@@ -3947,17 +3897,19 @@ td > .ifacebadge,
 .ifacebadge > em,
 .ifacebadge > img {
   display: inline-block;
-  align-self: flex-start;
+  align-self: center;
+  margin: 0 auto;
 }
 
 .network-status-table {
   display: flex;
   flex-wrap: wrap;
+  gap: 8px;
 }
 
 .network-status-table .ifacebox {
   flex-grow: 1;
-  margin: 0.5em;
+  margin: 0;
 }
 
 .network-status-table .ifacebox-body {
@@ -3977,11 +3929,35 @@ td > .ifacebadge,
 }
 
 .network-status-table .ifacebox-body .ifacebadge {
-  align-items: center;
-  flex: 1 1 auto;
-  min-width: 220px;
-  margin: 0.5em 0.25em 0 0.25em;
-  padding: 0.5em;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  min-width: unset !important;
+  margin: 0.2rem 0 0 0 !important;
+  padding: 0.4rem 0.2rem !important;
+  font-size: 0.75rem !important;
+  border-radius: 8px !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  text-align: center !important;
+  line-height: normal !important;
+  gap: 2px !important;
+}
+
+.network-status-table .ifacebox-body .ifacebadge > br {
+  display: none !important;
+}
+
+.network-status-table .ifacebox-body .ifacebadge > em {
+  display: block !important;
+  flex: 1 1 100% !important;
+  width: 100% !important;
+  text-align: center !important;
+  padding: 0 !important;
+  margin: 4px 0 0 0 !important;
 }
 
 #content_syslog,
@@ -4119,16 +4095,26 @@ textarea {
 }
 
 .ifacebox {
-  line-height: 1.25;
+  line-height: 1.2;
   display: inline-flex;
   flex-direction: column;
-  min-width: 100px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.2);
+  min-width: 90px;
+  border: var(--sectionBorder);
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: var(--sectionbgColor);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 .ifacebox-head {
-  padding: 0.25em;
+  padding: 0.2rem;
   background: var(--badgebgColor);
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: bold;
+  border-radius: 11px 11px 0 0;
 }
 
 .ifacebox-head.active {
@@ -4137,7 +4123,8 @@ textarea {
 }
 
 .ifacebox-body {
-  padding: 0.25em;
+  padding: 0.3rem;
+  text-align: center !important;
 }
 
 .cbi-image-button {
@@ -4320,7 +4307,7 @@ label[data-index][data-depends] {
   height: 100%;
   content: "";
   background-color: rgba(0, 0, 0, 0.56);
-  transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.35s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.35s cubic-bezier(0.25, 1, 0.5, 1);
   visibility: hidden;
   opacity: 0;
 }
@@ -4672,7 +4659,7 @@ input[name="nslookup"] {
   }
 
   html:has(.darkMask[style*="opacity: 1"]) .main-left {
-    width: 14rem !important;
+    width: 14.75rem !important;
     transform: translateX(0);
     opacity: 1;
     visibility: visible;
@@ -4771,6 +4758,25 @@ input[name="nslookup"] {
     display: block;
     position: absolute;
     margin-top: -34px;
+  }
+
+  .main > .main-left > .nav {
+    font-size: 0.9rem !important;
+  }
+
+  .main > .main-left > .nav > li a,
+  .main > .main-left > .nav > .slide > .menu,
+  .main > .main-left > .nav > li:last-child a {
+    font-size: 0.96rem !important;
+  }
+
+  .main > .main-left > .nav > .slide > .slide-menu > li > a {
+    font-size: 0.86rem !important;
+  }
+
+  .main > .main-left > .nav > .slide > a:before,
+  .main > .main-left > .nav > li > a:before {
+    font-size: 1rem !important;
   }
 }
 
@@ -4898,8 +4904,8 @@ input[name="nslookup"] {
   .main-left {
     top: 65px;
     height: calc(100% - 75px);
-    left: 10px;
-    width: 13rem !important;
+    left: 5px;
+    width: 11.5rem !important;
     border-radius: 14px;
   }
 
@@ -5184,7 +5190,7 @@ header > .fill {
   border-bottom-left-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
 }
-/* luxe-2 */
+/* luxe-3 */
 :root {
   --luxe-motion-fast: 150ms;
   --luxe-motion-normal: 220ms;
@@ -5279,8 +5285,10 @@ body.modal-overlay-active #modal_overlay {
 }
 
 body.modal-overlay-active #modal_overlay > .modal {
+  display: block !important;
   margin: 0 auto auto auto !important;
-  max-height: 88vh !important;
+  max-height: none !important;
+  overflow: visible !important;
 }
 
 .showSide,
@@ -5312,11 +5320,11 @@ textarea,
 }
 
 .main-left {
-  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1), left 0.45s cubic-bezier(0.4, 0, 0.2, 1), width 0.45s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.35s cubic-bezier(0.25, 1, 0.5, 1), left 0.35s cubic-bezier(0.25, 1, 0.5, 1), width 0.35s cubic-bezier(0.25, 1, 0.5, 1) !important;
 }
 
 #maincontent {
-  animation: luxeSoftFadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
+  animation: luxeSoftFadeIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
   will-change: opacity, transform;
 }
 
@@ -5467,11 +5475,11 @@ textarea,
 }
 
 .spinning {
-  padding-left: 46px !important;
+  padding-left: 44px !important;
 }
 
 .spinning::before {
-  left: 1.15em;
+  left: 12px;
   will-change: transform;
 }
 
@@ -5804,27 +5812,6 @@ body[data-nav-position="right"] .navbar .nav-link.active:hover img {
   }
 }
 
-@media screen and (max-width: 992px) {
-  .main-left {
-    width: 14.75rem !important;
-  }
-  .main > .main-left > .nav {
-    font-size: 0.9rem !important;
-  }
-  .main > .main-left > .nav > li a,
-  .main > .main-left > .nav > .slide > .menu,
-  .main > .main-left > .nav > li:last-child a {
-    font-size: 0.96rem !important;
-  }
-  .main > .main-left > .nav > .slide > .slide-menu > li > a {
-    font-size: 0.86rem !important;
-  }
-  .main > .main-left > .nav > .slide > a:before,
-  .main > .main-left > .nav > li > a:before {
-    font-size: 1rem !important;
-  }
-}
-
 @media screen and (max-width: 768px) {
   .navbar.nav-slider-active {
     width: 316px !important;
@@ -5873,37 +5860,16 @@ body[data-nav-position="right"] .navbar .nav-link.active:hover img {
   }
   select,
   input[type="text"],
-  input[type="password"],
-  .cbi-dropdown > ul > li input[type="text"] {
+  .cbi-dropdown > ul > li input[type="text"],
+  .cbi-value-field .control-group {
     width: 100%;
     height: 35px;
     line-height: normal;
   }
-  .cbi-value-field .control-group,
-  .cbi-value-field:has(> input[type="password"]),
-  .cbi-value-field:has(> input[type="text"] + .cbi-button) {
-    width: 100%;
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    align-items: center !important;
-    gap: 8px !important;
-    height: auto !important;
-  }
-  .cbi-value-field .control-group > input,
-  .cbi-value-field:has(> input[type="password"]) > input,
-  .cbi-value-field:has(> input[type="text"] + .cbi-button) > input {
-    flex: 1 1 auto !important;
-    width: 10px !important;
-    height: 35px !important;
-  }
-  .cbi-value-field .control-group > .cbi-button,
-  .cbi-value-field:has(> input[type="password"]) > .cbi-button,
-  .cbi-value-field:has(> input[type="text"] + .cbi-button) > .cbi-button {
-    flex: 0 0 auto !important;
-    width: auto !important;
-    min-width: 50px !important;
-    height: 35px !important;
-    margin: 0 !important;
+
+  input[type="password"] {
+    height: 35px;
+    line-height: normal;
   }
   .table {
     display: flex;
@@ -6003,11 +5969,11 @@ body[data-nav-position="right"] .navbar .nav-link.active:hover img {
   }
   .cbi-button,
   .btn {
-    height: 30px !important;
-    line-height: 30px !important;
-    min-width: 65px !important;
-    padding: 0 12px !important;
-    font-size: 0.82rem !important;
+    height: 28px !important;
+    line-height: 28px !important;
+    min-width: 60px !important;
+    padding: 0 10px !important;
+    font-size: 0.8rem !important;
     border-radius: 10px !important;
   }
   .cbi-page-actions button {
@@ -6075,11 +6041,17 @@ body[data-nav-position="right"] .navbar .nav-link.active:hover img {
     margin: 0 !important;
   }
   .modal {
-    margin: 1.5em auto;
+    margin: auto !important;
+    padding: 0.8rem !important;
+  }
+  .modal .cbi-value {
+    padding-bottom: 0.3rem !important;
+    margin-bottom: 0.3rem !important;
   }
   .modal .cbi-value-title {
     width: 100%;
-    padding: 0 0 4px 0;
+    padding: 0 0 2px 0 !important;
+    margin-bottom: 2px !important;
   }
   .modal .cbi-value > .cbi-value-field {
     width: 100%;
@@ -6141,6 +6113,61 @@ body[data-nav-position="right"] .navbar .nav-link.active:hover img {
   }
   .table .tr:has([id*="temp" i]) > .td:nth-child(3) *, .table .tr:has([class*="temp" i]) > .td:nth-child(3) * {
     font-size: 0.9rem !important;
+  }
+
+  #cbi-network .table .tr:has(.ifacebox),
+  #cbi-wireless .table .tr:has(.ifacebox) {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 16px 12px !important;
+    background-color: var(--sectionbgColor);
+    border-radius: 12px;
+    margin-bottom: 12px !important;
+    border: var(--sectionBorder) !important;
+  }
+
+  #cbi-network .table .tr:has(.ifacebox) > .td:first-child,
+  #cbi-wireless .table .tr:has(.ifacebox) > .td:first-child {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    border: none !important;
+    padding: 0 0 12px 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  #cbi-network .table .tr:has(.ifacebox) > .td:nth-child(2),
+  #cbi-wireless .table .tr:has(.ifacebox) > .td:nth-child(2) {
+    flex: 1 1 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+    overflow-wrap: anywhere !important;
+    word-wrap: break-word !important;
+    word-break: break-all !important;
+    white-space: normal !important;
+    font-size: 0.85rem !important;
+  }
+
+  #cbi-network .table .tr:has(.ifacebox) > .td.cbi-section-actions,
+  #cbi-wireless .table .tr:has(.ifacebox) > .td.cbi-section-actions {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+    justify-content: center !important;
+    margin-top: 12px !important;
+    padding: 0 !important;
+    border-top: 1px solid var(--cbilineColor) !important;
+    padding-top: 12px !important;
   }
 }
 
@@ -6250,8 +6277,8 @@ body[data-nav-position="bottom"] .navbar.navbar-hidden {
 body[data-nav-position="right"] .navbar.navbar-hidden {
   transform: translateY(-50%) translateX(calc(100% + 40px)) translateZ(0) !important;
 }
- /* luxe-3 */
-html.luxeos-auth body,
+ /* luxe-4 */
+ html.luxeos-auth body,
 html.luxeos-auth body *,
 body.luxeos,
 body.luxeos * {
