@@ -2,13 +2,15 @@
     let fs = require("fs");
     let binfo = (type(boardinfo) == 'object') ? boardinfo : {};
     let hn_file = fs.readfile("/proc/sys/kernel/hostname");
-    let hostname = (type(hn_file) == 'string' && length(hn_file) > 0) ? replace(hn_file, "\n", "") : (binfo.hostname || "OpenWrt");
+    let hostname = (type(hn_file) == 'string' && length(hn_file) > 0) ?
+    replace(hn_file, "\n", "") : (binfo.hostname || "OpenWrt");
     
     let e = (type(env) == 'object') ? env : {};
     let req_uri = e.REQUEST_URI || '';
     let user = (type(duser) == 'string') ? duser : '';
     let is_failed = (type(fuser) != 'undefined' && fuser) ? true : false;
-    let m = (type(media) == 'string') ? media : '';
+    let m = (type(media) == 'string') ?
+    media : '';
 -%}
 <!DOCTYPE html>
 <html lang="en" class="luxeos-auth">
@@ -36,15 +38,18 @@
                 <h2 id="hostname" data-text="{{ hostname }}">{{ hostname }}</h2>
 
                 <div class="date-time">
-                    <span id="d"></span> | <span id="t"></span>
+                    <span id="d"></span> |
+                    <span id="t"></span>
                 </div>
 
                 <div class="input_group">
-                    <input class="input_text" type="text" name="luci_username" placeholder="Username" value="{{ user }}" required autofocus>
+                    <input class="input_text pwd_input" id="u_in" type="text" name="luci_username" placeholder="Username" value="{{ user }}" required autofocus>
+                    <div class="t_eye" id="u_eye"></div>
                 </div>
 
                 <div class="input_group">
-                    <input class="input_text" type="password" name="luci_password" placeholder="Password" required>
+                    <input class="input_text pwd_input" id="p_in" type="password" name="luci_password" placeholder="Password">
+                    <div class="t_eye" id="t_eye"></div>
                 </div>
 
                 <input type="submit" value="LOGIN">
