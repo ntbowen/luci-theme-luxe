@@ -6278,7 +6278,7 @@ body[data-nav-position="right"] .navbar.navbar-hidden {
   transform: translateY(-50%) translateX(calc(100% + 40px)) translateZ(0) !important;
 }
  /* luxe-4 */
- html.luxeos-auth body,
+html.luxeos-auth body,
 html.luxeos-auth body *,
 body.luxeos,
 body.luxeos * {
@@ -6301,8 +6301,8 @@ body.luxeos {
   justify-content: center;
   align-items: center;
   font-family: system-ui;
-  background: var(--bg);
-  color: var(--text);
+  background: var(--luxe-bg);
+  color: var(--luxe-text);
   overflow: hidden;
   position: fixed;
   inset: 0;
@@ -6340,9 +6340,9 @@ body.luxeos .theme-btn {
   font-family: inherit;
   text-transform: uppercase;
   letter-spacing: .6px;
-  background: var(--bg);
-  color: var(--text);
-  box-shadow: var(--shadow-out);
+  background: var(--luxe-bg);
+  color: var(--luxe-text);
+  box-shadow: var(--luxe-shadow-out);
   position: relative;
   overflow: hidden;
 }
@@ -6379,7 +6379,7 @@ body.luxeos input[type="submit"]:hover::before {
 
 html.luxeos-auth .theme-btn:hover,
 body.luxeos .theme-btn:hover {
-  box-shadow: var(--shadow-in);
+  box-shadow: var(--luxe-shadow-in);
   transform: scale(.95);
 }
 
@@ -6396,20 +6396,70 @@ body.luxeos form {
 
 html.luxeos-auth .alert-message,
 body.luxeos .alert-message {
-  padding: 10px 14px;
-  border-radius: 10px;
-  background: var(--bg);
-  color: var(--text);
-  box-shadow: var(--shadow-out);
-  border-left: 3px solid var(--accent);
+  padding: 10px 14px !important;
+  border-radius: 10px !important;
+  background: var(--luxe-bg) !important;
+  color: var(--luxe-text) !important;
+  box-shadow: var(--luxe-shadow-out) !important;
+  border: 1px solid rgba(255, 255, 255, 0.03) !important;
+  border-left: 3px solid var(--luxe-accent) !important;
+  font-weight: 500 !important;
   animation: slideDown .4s ease;
-  font-size: 12px;
-  position: absolute;
-  top: calc(50% - 280px);
-  width: 90%;
-  max-width: 420px;
-  text-align: center;
-  z-index: 999;
+  font-size: 12px !important;
+  position: absolute !important;
+  top: calc(50% - 280px) !important;
+  width: 90% !important;
+  max-width: 420px !important;
+  text-align: center !important;
+  z-index: 9999 !important;
+}
+
+html.luxeos-auth body.liquid .alert-message,
+body.luxeos.liquid .alert-message {
+  background: rgba(213,226,251,.85) !important;
+  backdrop-filter: blur(8px) saturate(110%) !important;
+  -webkit-backdrop-filter: blur(8px) saturate(110%) !important;
+  border: 1px solid rgba(233,244,255,.25) !important;
+  border-left: 3px solid var(--luxe-accent) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,.08) !important;
+  color: var(--luxe-text) !important;
+}
+
+html.luxeos-auth body.gradien .alert-message,
+body.luxeos.gradien .alert-message,
+html.luxeos-auth body.glass .alert-message,
+body.luxeos.glass .alert-message {
+  background: rgba(30,30,50,.35) !important;
+  backdrop-filter: blur(18px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(200%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-left: 3px solid rgba(255,255,255,1) !important;
+  box-shadow: var(--luxe-shadow-out) !important;
+  color: var(--luxe-text) !important;
+}
+
+html.luxeos-auth body.neon .alert-message,
+body.luxeos.neon .alert-message,
+html.luxeos-auth body.pulse .alert-message,
+body.luxeos.pulse .alert-message,
+html.luxeos-auth body.curve .alert-message,
+body.luxeos.curve .alert-message,
+html.luxeos-auth body.matrix .alert-message,
+body.luxeos.matrix .alert-message {
+  background: var(--luxe-bg) !important;
+  box-shadow: var(--luxe-shadow-out), 0 0 10px var(--luxe-accent) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-left: 3px solid var(--luxe-accent) !important;
+  color: var(--luxe-text) !important;
+}
+
+html.luxeos-auth body.ocean .alert-message,
+body.luxeos.ocean .alert-message {
+  background: #16213e !important;
+  color: #00ff93 !important;
+  box-shadow: var(--luxe-shadow-out) !important;
+  border: 1px solid transparent !important;
+  border-left: 3px solid #ffd400 !important;
 }
 
 html.luxeos-auth .login_form_container,
@@ -6420,8 +6470,8 @@ body.luxeos .login_form_container {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--bg);
-  box-shadow: var(--shadow-deep);
+  background: var(--luxe-bg);
+  box-shadow: var(--luxe-shadow-deep);
   animation: slideUpFade .8s ease both;
 }
 
@@ -6431,8 +6481,8 @@ body.luxeos .login_form {
   height: calc(100% - 14px);
   padding: 30px;
   border-radius: 26px;
-  background: var(--bg);
-  box-shadow: var(--shadow-in);
+  background: var(--luxe-bg);
+  box-shadow: var(--luxe-shadow-in);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -6444,7 +6494,7 @@ body.luxeos h2 {
   font-weight: 700;
   text-align: center;
   margin-bottom: 12px;
-  color: var(--text);
+  color: var(--luxe-text);
   animation: fadeIn .6s ease .3s both;
   font-family: monospace !important;
 }
@@ -6466,7 +6516,7 @@ body.luxeos .date-time {
   font-size: 13px;
   opacity: .8;
   margin-bottom: 20px;
-  color: var(--muted);
+  color: var(--luxe-muted);
   font-weight: 500;
   animation: fadeIn .6s ease .4s both;
 }
@@ -6474,8 +6524,8 @@ body.luxeos .date-time {
 html.luxeos-auth .input_group,
 body.luxeos .input_group {
   margin-bottom: 12px;
-  background: var(--bg);
-  box-shadow: var(--shadow-in);
+  background: var(--luxe-bg);
+  box-shadow: var(--luxe-shadow-in);
   padding: 2px;
   position: relative;
 }
@@ -6500,7 +6550,7 @@ body.luxeos .input_text {
   font-size: 14px;
   padding: 0 18px;
   background: transparent;
-  color: var(--input);
+  color: var(--luxe-input);
   position: relative;
   z-index: 1;
 }
@@ -6510,9 +6560,41 @@ body.luxeos .input_text:focus {
   transform: scale(1.02);
 }
 
+html.luxeos-auth .pwd_input,
+body.luxeos .pwd_input {
+  padding-right: 38px !important;
+}
+
+html.luxeos-auth .t_eye,
+body.luxeos .t_eye {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: var(--luxe-muted);
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+
+html.luxeos-auth .t_eye:hover,
+body.luxeos .t_eye:hover {
+  color: var(--luxe-accent);
+  opacity: 1;
+  transform: translateY(-50%) scale(1.15);
+}
+
 html.luxeos-auth ::placeholder,
 body.luxeos ::placeholder {
-  color: var(--muted);
+  color: var(--luxe-muted);
   opacity: .6;
 }
 
@@ -6526,9 +6608,9 @@ body.luxeos input[type="submit"] {
   letter-spacing: 2px;
   cursor: pointer;
   margin-top: 12px;
-  background: var(--bg);
-  color: var(--accent);
-  box-shadow: var(--shadow-out);
+  background: var(--luxe-bg);
+  color: var(--luxe-accent);
+  box-shadow: var(--luxe-shadow-out);
   animation: fadeIn .6s ease .7s both;
   position: relative;
   overflow: hidden;
@@ -6537,8 +6619,8 @@ body.luxeos input[type="submit"] {
 
 html.luxeos-auth input[type="submit"]:hover,
 body.luxeos input[type="submit"]:hover {
-  box-shadow: var(--shadow-in);
-  color: var(--input);
+  box-shadow: var(--luxe-shadow-in);
+  color: var(--luxe-input);
   transform: scale(.98);
 }
 
@@ -6547,7 +6629,7 @@ body.luxeos .footer {
   margin-top: 50px;
   text-align: center;
   font-size: 14px;
-  color: var(--muted);
+  color: var(--luxe-muted);
   opacity: .7;
   animation: fadeIn .6s ease .8s both;
   letter-spacing: .3px;
@@ -6565,92 +6647,91 @@ html.luxeos-auth body.curve,
 body.luxeos.curve,
 html.luxeos-auth body.matrix,
 body.luxeos.matrix {
-  --bg: #0e1b3c;
-  --shadow-out: 8px 8px 16px #0a1228,-8px -8px 16px #122450;
-  --shadow-in: inset 4px 4px 8px #0a1228,inset -4px -4px 8px #122450;
-  --shadow-deep: 20px 20px 40px #0a1228,-20px -20px 40px #122450;
+  --luxe-bg: #0e1b3c;
+  --luxe-shadow-out: 8px 8px 16px #0a1228,-8px -8px 16px #122450;
+  --luxe-shadow-in: inset 4px 4px 8px #0a1228,inset -4px -4px 8px #122450;
+  --luxe-shadow-deep: 20px 20px 40px #0a1228,-20px -20px 40px #122450;
 }
 
 html.luxeos-auth body,
 body.luxeos,
 html.luxeos-auth body.dark,
 body.luxeos.dark {
-  --text: #ddd;
-  --accent: #ffd700;
-  --input: #4ff181;
-  --muted: #bbb;
+  --luxe-text: #ddd;
+  --luxe-accent: #ffd700;
+  --luxe-input: #4ff181;
+  --luxe-muted: #bbb;
 }
 
 html.luxeos-auth body.light,
 body.luxeos.light {
-  --bg: #d5e2fb;
-  --text: #4a5568;
-  --accent: #6366f1;
-  --input: #2d3748;
-  --muted: #718096;
-  --shadow-out: 6px 6px 12px #bcc9e8,-6px -6px 12px #eefbff;
-  --shadow-in: inset 3px 3px 6px #bcc9e8,inset -3px -3px 6px #eefbff;
-  --shadow-deep: 15px 15px 30px #bcc9e8,-15px -15px 30px #eefbff;
+  --luxe-bg: #d5e2fb;
+  --luxe-text: #4a5568;
+  --luxe-accent: #6366f1;
+  --luxe-input: #2d3748;
+  --luxe-muted: #718096;
+  --luxe-shadow-out: 6px 6px 12px #bcc9e8,-6px -6px 12px #eefbff;
+  --luxe-shadow-in: inset 3px 3px 6px #bcc9e8,inset -3px -3px 6px #eefbff;
+  --luxe-shadow-deep: 15px 15px 30px #bcc9e8,-15px -15px 30px #eefbff;
 }
 
 html.luxeos-auth body.liquid,
 body.luxeos.liquid {
-  --bg: #d5e2fb;
-  --text: #2d3748;
-  --accent: #3182ce;
-  --input: #1a202c;
-  --muted: #4a5568;
-  --shadow-out: 6px 6px 14px #c8d4f2,-6px -6px 14px #e2efff;
-  --shadow-in: inset 1px 1px 2px #c8d4f2,inset -1px -1px 2px #e2efff;
-  --shadow-deep: 12px 12px 20px #c8d4f2,-12px -12px 20px #e2efff;
+  --luxe-bg: #d5e2fb;
+  --luxe-text: #2d3748;
+  --luxe-accent: #3182ce;
+  --luxe-input: #1a202c;
+  --luxe-muted: #4a5568;
+  --luxe-shadow-out: 6px 6px 14px #c8d4f2,-6px -6px 14px #e2efff;
+  --luxe-shadow-in: inset 1px 1px 2px #c8d4f2,inset -1px -1px 2px #e2efff;
+  --luxe-shadow-deep: 12px 12px 20px #c8d4f2,-12px -12px 20px #e2efff;
 }
 
 html.luxeos-auth body.neon,
 body.luxeos.neon {
-  --text: #00d9ff;
-  --accent: #00d9ff;
-  --input: #ff00ff;
-  --muted: #7a8ea8;
-  --grad: linear-gradient(90deg,#00d9ff,#ff00ff,#00d9ff);
-  --gsize: 200% 200%;
-  --t-btn-bfr: linear-gradient(90deg,transparent,rgba(0,217,255,.3),rgba(255,0,255,.3),transparent);
+  --luxe-text: #00d9ff;
+  --luxe-accent: #00d9ff;
+  --luxe-input: #ff00ff;
+  --luxe-muted: #7a8ea8;
+  --luxe-grad: linear-gradient(90deg,#00d9ff,#ff00ff,#00d9ff);
+  --luxe-gsize: 200% 200%;
+  --luxe-t-btn-bfr: linear-gradient(90deg,transparent,rgba(0,217,255,.3),rgba(255,0,255,.3),transparent);
 }
 
 html.luxeos-auth body.pulse,
 body.luxeos.pulse {
-  --text: #4cc9f0;
-  --accent: #4cc9f0;
-  --input: #f72585;
-  --muted: #fef13c;
+  --luxe-text: #4cc9f0;
+  --luxe-accent: #4cc9f0;
+  --luxe-input: #f72585;
+  --luxe-muted: #fef13c;
 }
 
 html.luxeos-auth body.curve,
 body.luxeos.curve {
-  --text: #8ac9e6;
-  --accent: #8ac9e6;
-  --input: #d96aa3;
-  --muted: #e8e096;
-  --grad: linear-gradient(180deg,#4cc9f0 0%,#4cc9f0 25%,#f72585 25%,#f72585 50%,#fef13c 50%,#fef13c 75%,#4ff181 75%,#4ff181 100%);
-  --gsize: 200% 200%;
-  --t-btn-bfr: linear-gradient(90deg,transparent,rgba(76,201,240,.25),rgba(247,37,133,.25),rgba(254,241,60,.25),transparent);
+  --luxe-text: #8ac9e6;
+  --luxe-accent: #8ac9e6;
+  --luxe-input: #d96aa3;
+  --luxe-muted: #e8e096;
+  --luxe-grad: linear-gradient(180deg,#4cc9f0 0%,#4cc9f0 25%,#f72585 25%,#f72585 50%,#fef13c 50%,#fef13c 75%,#4ff181 75%,#4ff181 100%);
+  --luxe-gsize: 200% 200%;
+  --luxe-t-btn-bfr: linear-gradient(90deg,transparent,rgba(76,201,240,.25),rgba(247,37,133,.25),rgba(254,241,60,.25),transparent);
 }
 
 html.luxeos-auth body.matrix,
 body.luxeos.matrix {
-  --text: #9c9fe8;
-  --accent: #9c9fe8;
-  --input: #e8e096;
-  --muted: #a0aac5;
-  --grad: linear-gradient(135deg,#7a7dd6 0%,#1a1d4f 30%,#7a7dd6 60%,#fef338 100%);
-  --gsize: 300% 300%;
-  --t-btn-bfr: linear-gradient(90deg,transparent,rgba(122,125,214,.3),rgba(254,243,56,.3),transparent);
+  --luxe-text: #9c9fe8;
+  --luxe-accent: #9c9fe8;
+  --luxe-input: #e8e096;
+  --luxe-muted: #a0aac5;
+  --luxe-grad: linear-gradient(135deg,#7a7dd6 0%,#1a1d4f 30%,#7a7dd6 60%,#fef338 100%);
+  --luxe-gsize: 300% 300%;
+  --luxe-t-btn-bfr: linear-gradient(90deg,transparent,rgba(122,125,214,.3),rgba(254,243,56,.3),transparent);
 }
 
 @keyframes bgShift {
   0%,100% {
     background-position: 0% 50%;
   }
-
   50% {
     background-position: 100% 50%;
   }
@@ -6660,23 +6741,18 @@ body.luxeos.matrix {
   0%,100% {
     border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
   }
-
   16% {
     border-radius: 30% 60% 70% 40%/50% 60% 30% 60%;
   }
-
   32% {
     border-radius: 100% 60% 60% 100%/100% 100% 60% 60%;
   }
-
   48% {
     border-radius: 60% 100% 60% 100%/100% 60% 60% 100%;
   }
-
   64% {
     border-radius: 50% 60% 90% 40%/60% 40% 40% 50%;
   }
-
   80% {
     border-radius: 70% 30% 40% 60%/30% 70% 60% 40%;
   }
@@ -6686,15 +6762,12 @@ body.luxeos.matrix {
   0%,100% {
     box-shadow: 0 0 8px #4cc9f0,inset 0 0 8px rgba(76,201,240,.1);
   }
-
   25% {
     box-shadow: 0 0 8px #f72585,inset 0 0 8px rgba(247,37,133,.1);
   }
-
   50% {
     box-shadow: 0 0 8px #fef13c,inset 0 0 8px rgba(254,241,60,.1);
   }
-
   75% {
     box-shadow: 0 0 8px #4ff181,inset 0 0 8px rgba(79,241,129,.1);
   }
@@ -6704,15 +6777,12 @@ body.luxeos.matrix {
   0%,100% {
     background-position: 0% 0%;
   }
-
   25% {
     background-position: 100% 0%;
   }
-
   50% {
     background-position: 100% 100%;
   }
-
   75% {
     background-position: 0% 100%;
   }
@@ -6722,7 +6792,6 @@ body.luxeos.matrix {
   0%,100% {
     background-position: 0% 0%;
   }
-
   50% {
     background-position: 50% 100%;
   }
@@ -6732,7 +6801,6 @@ body.luxeos.matrix {
   0% {
     transform: rotate(0deg);
   }
-
   100% {
     transform: rotate(360deg);
   }
@@ -6834,8 +6902,8 @@ body.luxeos.curve .input_group,
 html.luxeos-auth body.matrix .input_group,
 body.luxeos.matrix .input_group {
   position: relative;
-  background: var(--grad);
-  background-size: var(--gsize);
+  background: var(--luxe-grad);
+  background-size: var(--luxe-gsize);
   padding: 2px;
 }
 
@@ -6854,7 +6922,7 @@ body.luxeos.matrix .input_group::before {
   content: "";
   position: absolute;
   inset: 2px;
-  background: var(--bg);
+  background: var(--luxe-bg);
   z-index: 0;
 }
 
@@ -6884,7 +6952,7 @@ html.luxeos-auth body.matrix .login_form,
 body.luxeos.matrix .login_form {
   position: relative;
   z-index: 1;
-  background: var(--bg);
+  background: var(--luxe-bg);
 }
 
 html.luxeos-auth body.neon .theme-btn,
@@ -6893,8 +6961,8 @@ html.luxeos-auth body.curve .theme-btn,
 body.luxeos.curve .theme-btn,
 html.luxeos-auth body.matrix .theme-btn,
 body.luxeos.matrix .theme-btn {
-  background: var(--grad);
-  background-size: var(--gsize);
+  background: var(--luxe-grad);
+  background-size: var(--luxe-gsize);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -6906,7 +6974,7 @@ html.luxeos-auth body.curve .theme-btn::before,
 body.luxeos.curve .theme-btn::before,
 html.luxeos-auth body.matrix .theme-btn::before,
 body.luxeos.matrix .theme-btn::before {
-  background: var(--t-btn-bfr);
+  background: var(--luxe-t-btn-bfr);
 }
 
 html.luxeos-auth body.neon h2,
@@ -7000,14 +7068,14 @@ html.luxeos-auth body.gradien,
 body.luxeos.gradien,
 html.luxeos-auth body.glass,
 body.luxeos.glass {
-  --bg: rgba(10,10,20,.25);
-  --text: #fff;
-  --accent: #fff;
-  --input: #fff;
-  --muted: rgba(255,255,255,.95);
-  --shadow-out: 8px 8px 16px rgba(0,0,0,.3),-8px -8px 16px rgba(255,255,255,.06);
-  --shadow-in: inset 4px 4px 8px rgba(0,0,0,.2),inset -4px -4px 8px rgba(255,255,255,.06);
-  --shadow-deep: 20px 20px 40px rgba(0,0,0,.4),-20px -20px 40px rgba(255,255,255,.05);
+  --luxe-bg: rgba(10,10,20,.25);
+  --luxe-text: #fff;
+  --luxe-accent: #fff;
+  --luxe-input: #fff;
+  --luxe-muted: rgba(255,255,255,.95);
+  --luxe-shadow-out: 8px 8px 16px rgba(0,0,0,.3),-8px -8px 16px rgba(255,255,255,.06);
+  --luxe-shadow-in: inset 4px 4px 8px rgba(0,0,0,.2),inset -4px -4px 8px rgba(255,255,255,.06);
+  --luxe-shadow-deep: 20px 20px 40px rgba(0,0,0,.4),-20px -20px 40px rgba(255,255,255,.05);
 }
 
 html.luxeos-auth body.gradien::after,
@@ -7116,16 +7184,6 @@ body.luxeos.glass .date-time {
   text-shadow: 0 2px 5px rgba(0,0,0,.7),0 0 10px rgba(0,0,0,.5);
 }
 
-html.luxeos-auth body.gradien .alert-message,
-body.luxeos.gradien .alert-message,
-html.luxeos-auth body.glass .alert-message,
-body.luxeos.glass .alert-message {
-  background: rgba(30,30,50,.35);
-  backdrop-filter: blur(18px) saturate(200%);
-  -webkit-backdrop-filter: blur(18px) saturate(200%);
-  border-left: 3px solid rgba(255,255,255,1);
-}
-
 html.luxeos-auth body.gradien input[type="submit"],
 body.luxeos.gradien input[type="submit"],
 html.luxeos-auth body.glass input[type="submit"],
@@ -7146,14 +7204,14 @@ body.luxeos.glass input[type="submit"]::before {
 
 html.luxeos-auth body.ocean,
 body.luxeos.ocean {
-  --bg: #16213e;
-  --text: #00ff93;
-  --accent: #00ff93;
-  --input: #00a8cc;
-  --muted: #a0a0a0;
-  --shadow-out: 8px 8px 16px #0a1228,-8px -8px 16px #1c2a4d;
-  --shadow-in: inset 4px 4px 8px #0a1228,inset -4px -4px 8px #1c2a4d;
-  --shadow-deep: 20px 20px 40px #0a1228,-20px -20px 40px #1c2a4d;
+  --luxe-bg: #16213e;
+  --luxe-text: #00ff93;
+  --luxe-accent: #00ff93;
+  --luxe-input: #00a8cc;
+  --luxe-muted: #a0a0a0;
+  --luxe-shadow-out: 8px 8px 16px #0a1228,-8px -8px 16px #1c2a4d;
+  --luxe-shadow-in: inset 4px 4px 8px #0a1228,inset -4px -4px 8px #1c2a4d;
+  --luxe-shadow-deep: 20px 20px 40px #0a1228,-20px -20px 40px #1c2a4d;
 }
 
 html.luxeos-auth body.ocean .login_form_container,
@@ -7186,7 +7244,7 @@ body.luxeos.ocean .login_form {
   width: 100%;
   height: 100%;
   background: #16213e;
-  box-shadow: var(--shadow-in);
+  box-shadow: var(--luxe-shadow-in);
   border-radius: 26px;
 }
 
@@ -7199,16 +7257,16 @@ body.luxeos.ocean h2 {
 
 html.luxeos-auth body.ocean .theme-btn,
 body.luxeos.ocean .theme-btn {
-  background: var(--bg);
+  background: var(--luxe-bg);
   color: #00ff93;
-  box-shadow: var(--shadow-out);
+  box-shadow: var(--luxe-shadow-out);
   border: 2px solid transparent;
 }
 
 html.luxeos-auth body.ocean .theme-btn:hover,
 body.luxeos.ocean .theme-btn:hover {
   border-color: #00ff93;
-  box-shadow: 0 0 20px rgba(0,212,255,.4),var(--shadow-in);
+  box-shadow: 0 0 20px rgba(0,212,255,.4),var(--luxe-shadow-in);
 }
 
 html.luxeos-auth body.ocean .theme-btn::before,
@@ -7219,7 +7277,7 @@ body.luxeos.ocean .theme-btn::before {
 html.luxeos-auth body.ocean .input_group,
 body.luxeos.ocean .input_group {
   background: #0f3460;
-  box-shadow: var(--shadow-in);
+  box-shadow: var(--luxe-shadow-in);
   border: 2px solid transparent;
   transition: none;
 }
@@ -7227,7 +7285,7 @@ body.luxeos.ocean .input_group {
 html.luxeos-auth body.ocean .input_group:focus-within,
 body.luxeos.ocean .input_group:focus-within {
   border-color: transparent;
-  box-shadow: var(--shadow-in);
+  box-shadow: var(--luxe-shadow-in);
   transform: none;
 }
 
@@ -7265,9 +7323,9 @@ body.luxeos.ocean .input_text::placeholder {
 
 html.luxeos-auth body.ocean input[type="submit"],
 body.luxeos.ocean input[type="submit"] {
-  background: var(--bg);
-  color: var(--accent);
-  box-shadow: var(--shadow-out);
+  background: var(--luxe-bg);
+  color: var(--luxe-accent);
+  box-shadow: var(--luxe-shadow-out);
   border: none;
   position: relative;
   overflow: hidden;
@@ -7280,8 +7338,8 @@ body.luxeos.ocean input[type="submit"]::before {
 
 html.luxeos-auth body.ocean input[type="submit"]:hover,
 body.luxeos.ocean input[type="submit"]:hover {
-  box-shadow: var(--shadow-in);
-  color: var(--input);
+  box-shadow: var(--luxe-shadow-in);
+  color: var(--luxe-input);
   transform: scale(.98);
 }
 
@@ -7295,14 +7353,6 @@ body.luxeos.ocean .date-time,
 html.luxeos-auth body.ocean .footer,
 body.luxeos.ocean .footer {
   color: #a0a0a0;
-}
-
-html.luxeos-auth body.ocean .alert-message,
-body.luxeos.ocean .alert-message {
-  background: #16213e;
-  color: #00ff93;
-  box-shadow: var(--shadow-out);
-  border-left: 3px solid #ffd400;
 }
 
 @media (max-width:768px) {
@@ -7338,6 +7388,17 @@ body.luxeos.ocean .alert-message {
     padding: 0 14px;
   }
 
+  html.luxeos-auth .pwd_input,
+  body.luxeos .pwd_input {
+    padding-right: 28px !important;
+  }
+
+  html.luxeos-auth .t_eye,
+  body.luxeos .t_eye {
+    right: 12px;
+    font-size: 13px;
+  }
+
   html.luxeos-auth .input_group,
   body.luxeos .input_group {
     margin-bottom: 8px;
@@ -7368,10 +7429,11 @@ body.luxeos.ocean .alert-message {
 
   html.luxeos-auth .alert-message,
   body.luxeos .alert-message {
-    top: calc(50% - 210px);
-    font-size: 11px;
-    padding: 8px 12px;
-    max-width: 85%;
+    top: calc(50% - 210px) !important;
+    font-size: 11px !important;
+    padding: 8px 12px !important;
+    max-width: 85% !important;
+    border-radius: 10px !important;
   }
 
   html.luxeos-auth .footer,
@@ -7384,7 +7446,7 @@ body.luxeos.ocean .alert-message {
 @media (max-width:480px) {
   html.luxeos-auth .alert-message,
   body.luxeos .alert-message {
-    top: calc(50% - 195px);
+    top: calc(50% - 195px) !important;
   }
 
   html.luxeos-auth .footer,
@@ -7398,7 +7460,6 @@ body.luxeos.ocean .alert-message {
     opacity: 0;
     transform: translateY(60px) scale(.95);
   }
-
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -7410,7 +7471,6 @@ body.luxeos.ocean .alert-message {
     opacity: 0;
     transform: translateY(15px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -7422,7 +7482,6 @@ body.luxeos.ocean .alert-message {
     opacity: 0;
     transform: translateY(-15px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -7434,7 +7493,6 @@ body.luxeos.ocean .alert-message {
     opacity: 0;
     transform: translateY(-20px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -7457,7 +7515,6 @@ body.luxeos .fade-out {
   0%,50% {
     opacity: 1;
   }
-
   51%,100% {
     opacity: 0;
   }
