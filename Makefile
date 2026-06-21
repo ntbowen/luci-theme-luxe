@@ -4,8 +4,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luci-theme-luxe
-PKG_VERSION:=2.6.1_beta1
-PKG_RELEASE:=210626
+PKG_VERSION:=2.6.2_beta2
+PKG_RELEASE:=220626
 PKG_LICENSE:=GPL-3.0
 PKG_MAINTAINER:=xidz_x
 PKGARCH:=all
