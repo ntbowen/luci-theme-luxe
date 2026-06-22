@@ -1,0 +1,152 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "LuxeOs Theme × XIDZsWRT"
+msgstr "LuxeOs 主题 × XIDZsWRT"
+
+msgid "Customize Your LuxeOs Theme Style / Mode"
+msgstr "自定义您的 LuxeOs 主题风格 / 模式"
+
+msgid "Theme Style / Mode"
+msgstr "主题风格 / 模式"
+
+msgid "Theme Style"
+msgstr "主题风格"
+
+msgid "LuxeOs"
+msgstr "LuxeOs"
+
+msgid "Glassmorphism"
+msgstr "玻璃态"
+
+msgid "Aesthetic"
+msgstr "霓虹美学"
+
+msgid "Neo-Brutalism"
+msgstr "新野兽主义"
+
+msgid "Neumorphism"
+msgstr "新拟物"
+
+msgid "AeroNeo"
+msgstr "AeroNeo"
+
+msgid "Follow system"
+msgstr "跟随系统"
+
+msgid "Light"
+msgstr "亮色"
+
+msgid "Dark"
+msgstr "暗色"
+
+msgid "Glassmorphism 3D"
+msgstr "玻璃态 3D"
+
+msgid "Glassmorphism Dark"
+msgstr "玻璃态暗色"
+
+msgid "Glassmorphism Crystal"
+msgstr "玻璃态水晶"
+
+msgid "Neon"
+msgstr "霓虹"
+
+msgid "Neonix"
+msgstr "Neonix"
+
+msgid "Aurora"
+msgstr "极光"
+
+msgid "Accent Color"
+msgstr "主题色"
+
+msgid "HEX color format, example: #bb9df2. Color reference: <a href=\"https://kigen.design/color\" target=\"_blank\">https://kigen.design/color</a>"
+msgstr "HEX 颜色格式，例如：#bb9df2。颜色参考：<a href=\"https://kigen.design/color\" target=\"_blank\">https://kigen.design/color</a>"
+
+msgid "Glass Blur"
+msgstr "玻璃模糊强度"
+
+msgid "Set blur intensity for Glass mode, example: 16. Use 0 to disable blur."
+msgstr "设置玻璃模式的模糊强度，例如：16。填 0 可禁用模糊效果。"
+
+msgid "Glass 3D Shadow"
+msgstr "玻璃态 3D 阴影"
+
+msgid "Enable soft 3D shadow effect."
+msgstr "启用柔和 3D 阴影效果。"
+
+msgid "Show Hostname"
+msgstr "显示主机名"
+
+msgid "Show or hide hostname."
+msgstr "显示或隐藏主机名。"
+
+msgid "Floating Navbar"
+msgstr "悬浮导航栏"
+
+msgid "Show or hide floating navbar."
+msgstr "显示或隐藏悬浮导航栏。"
+
+msgid "Navbar Position"
+msgstr "导航栏位置"
+
+msgid "Choose floating navbar position."
+msgstr "选择悬浮导航栏的位置。"
+
+msgid "Horizontal"
+msgstr "横向"
+
+msgid "Vertical"
+msgstr "纵向"
+
+msgid "Navbar Slider"
+msgstr "导航栏滑动"
+
+msgid "Enable scrollable navbar. Mobile shows 5 icons, desktop shows 8 icons."
+msgstr "启用可滚动导航栏。移动端显示 5 个图标，桌面端显示 8 个图标。"
+
+msgid "Navbar Icons"
+msgstr "导航栏图标数量"
+
+msgid "Select how many icons will be displayed when Navbar Slider is disabled."
+msgstr "选择关闭导航栏滑动时显示的图标数量。"
+
+msgid "4 Icons"
+msgstr "4 个图标"
+
+msgid "5 Icons"
+msgstr "5 个图标"
+
+msgid "6 Icons"
+msgstr "6 个图标"
+
+msgid "7 Icons"
+msgstr "7 个图标"
+
+msgid "8 Icons"
+msgstr "8 个图标"
+
+msgid "9 Icons"
+msgstr "9 个图标"
+
+msgid "Custom Navbar Editor"
+msgstr "自定义导航栏编辑器"
+
+msgid "Check this box to open the URL menu editor. If unchecked, the theme will automatically use the default menu."
+msgstr "勾选此项以打开 URL 菜单编辑器。若不勾选，主题将自动使用默认菜单。"
+
+msgid "Navbar Menu List"
+msgstr "导航栏菜单列表"
+
+msgid "<b>Format:</b> Title|URL_Path|Icon.png<br>Remove with the cross button <b>( x )</b>. Add items with <b>( + )</b>. The list is pre-filled for easy editing."
+msgstr "<b>格式：</b>标题|URL路径|图标.png<br>点击 <b>( x )</b> 删除，点击 <b>( + )</b> 添加。列表已预填默认值，方便编辑。"
+
+msgid "Save Settings"
+msgstr "保存设置"
+
+msgid "Apply Changes"
+msgstr "应用更改"
+
+msgid "LuxeOs Config"
+msgstr "LuxeOs 主题配置"
