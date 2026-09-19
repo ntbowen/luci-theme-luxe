@@ -43,12 +43,12 @@
 </head>
 <body class="luxe-login light">
     <div class="theme-pages-toggle">
-        <button class="theme-pages-btn" id="b" type="button">LIGHT</button>
+        <button class="theme-pages-btn" id="b" type="button">{{ _('Light') }}</button>
     </div>
     <form method="post" action="{{ req_uri }}">
         {% if (is_failed): %}
         <div class="alert-message" id="a">
-            Invalid username / password! Please try again.
+            {{ _('Invalid username / password! Please try again.') }}
         </div>
         {% endif %}
         <div class="login_form_container">
@@ -58,14 +58,14 @@
                     <span id="d"></span> | <span id="t"></span>
                 </div>
                 <div class="input_group">
-                    <input class="input_text pwd_input" id="u_in" type="text" name="luci_username" placeholder="Username" value="{{ user }}" required autofocus>
+                    <input class="input_text pwd_input" id="u_in" type="text" name="luci_username" placeholder="{{ _('Username') }}" value="{{ user }}" required autofocus>
                     <div class="t_eye" id="u_eye"></div>
                 </div>
                 <div class="input_group">
-                    <input class="input_text pwd_input" id="p_in" type="password" name="luci_password" placeholder="Password">
+                    <input class="input_text pwd_input" id="p_in" type="password" name="luci_password" placeholder="{{ _('Password') }}">
                     <div class="t_eye" id="t_eye"></div>
                 </div>
-                <input type="submit" value="LOGIN">
+                <input type="submit" value="{{ _('Login') }}">
                 <div class="footer"></div>
             </div>
         </div>

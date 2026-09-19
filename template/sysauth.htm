@@ -39,12 +39,12 @@
 </head>
 <body class="luxe-login light">
 	<div class="theme-pages-toggle">
-		<button class="theme-pages-btn" id="b" type="button">LIGHT</button>
+		<button class="theme-pages-btn" id="b" type="button"><%:Light%></button>
 	</div>
 	<form method="post" action="<%=luci.http.getenv('REQUEST_URI')%>">
 		<% if fuser then %>
 		<div class="alert-message" id="a">
-			Invalid username / password! Please try again.
+			<%:Invalid username / password! Please try again.%>
 		</div>
 		<% end %>
 		<div class="login_form_container">
@@ -54,14 +54,14 @@
 					<span id="d"></span> | <span id="t"></span>
 				</div>
 				<div class="input_group">
-					<input class="input_text pwd_input" id="u_in" type="text" name="luci_username" placeholder="Username" value="<%= duser or '' %>" required autofocus>
+					<input class="input_text pwd_input" id="u_in" type="text" name="luci_username" placeholder="<%:Username%>" value="<%= duser or '' %>" required autofocus>
 					<div class="t_eye" id="u_eye"></div>
 				</div>
 				<div class="input_group">
-					<input class="input_text pwd_input" id="p_in" type="password" name="luci_password" placeholder="Password">
+					<input class="input_text pwd_input" id="p_in" type="password" name="luci_password" placeholder="<%:Password%>">
 					<div class="t_eye" id="t_eye"></div>
 				</div>
-				<input type="submit" value="LOGIN">
+				<input type="submit" value="<%:Login%>">
 				<div class="footer"></div>
 			</div>
 		</div>
