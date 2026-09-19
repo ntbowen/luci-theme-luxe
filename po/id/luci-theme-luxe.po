@@ -1,0 +1,126 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: luci-theme-luxe\n"
+"Language-Team: Indonesian\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: template/header.ut:115
+#: template/header.htm:122
+msgid "Auto"
+msgstr "Otomatis"
+
+#: template/header.ut:93
+#: template/header.htm:100
+msgid "Auto-hide Navbar"
+msgstr "Sembunyikan Navbar Otomatis"
+
+#: template/header.ut:152
+#: template/header.htm:159
+msgid "Collecting data..."
+msgstr "Mengumpulkan data..."
+
+#: template/header.ut:115
+#: template/header.htm:122
+msgid "Dark"
+msgstr "Gelap"
+
+#: template/header.ut:89
+#: template/header.htm:96
+msgid "Floating Navbar"
+msgstr "Navbar Mengambang"
+
+#: template/header.ut:174
+#: template/header.htm:181
+msgid "Go to firmware upgrade..."
+msgstr "Ke upgrade firmware..."
+
+#: template/header.ut:164
+#: template/header.htm:171
+msgid "Go to password configuration..."
+msgstr "Ke konfigurasi kata sandi..."
+
+#: template/header.ut:101
+#: template/header.htm:108
+msgid "Icon Count"
+msgstr "Jumlah Ikon"
+
+#: template/sysauth.ut:51
+#: template/sysauth.htm:47
+msgid "Invalid username / password! Please try again."
+msgstr "Nama pengguna / kata sandi salah! Silakan coba lagi."
+
+#: template/header.ut:181
+#: template/header.htm:188
+msgid "JavaScript required!"
+msgstr "JavaScript diperlukan!"
+
+#: template/header.ut:115
+#: template/header.htm:122
+#: template/sysauth.ut:46
+#: template/sysauth.htm:42
+msgid "Light"
+msgstr "Terang"
+
+#: template/sysauth.ut:68
+#: template/sysauth.htm:64
+msgid "Login"
+msgstr "Masuk"
+
+#: template/header.ut:97
+#: template/header.htm:104
+msgid "Navbar Slider"
+msgstr "Slider Navbar"
+
+#: template/header.ut:172
+#: template/header.htm:179
+msgid "No changes to settings will be stored and are lost after rebooting. This mode should only be used to install a firmware upgrade"
+msgstr "Perubahan pada pengaturan tidak akan disimpan dan hilang setelah reboot. Mode ini hanya boleh digunakan untuk menginstal upgrade firmware."
+
+#: template/header.ut:161
+#: template/header.htm:168
+msgid "No password set!"
+msgstr "Kata sandi belum diatur!"
+
+#: template/sysauth.ut:65
+#: template/sysauth.htm:61
+msgid "Password"
+msgstr "Kata Sandi"
+
+#: template/header.ut:85
+#: template/header.htm:92
+msgid "Show Hostname"
+msgstr "Tampilkan Hostname"
+
+#: template/header.ut:171
+#: template/header.htm:178
+msgid "System running in recovery (initramfs) mode."
+msgstr "Sistem berjalan dalam mode pemulihan (initramfs)."
+
+#: template/header.ut:113
+#: template/header.htm:120
+msgid "Theme Mode"
+msgstr "Mode Tema"
+
+#: template/header.ut:107
+#: template/header.htm:114
+msgid "Theme Style"
+msgstr "Gaya Tema"
+
+#: template/header.ut:162
+#: template/header.htm:169
+msgid "There is no password set on this router. Please configure a root password to protect the web interface."
+msgstr "Router ini belum memiliki kata sandi. Silakan konfigurasikan kata sandi root untuk melindungi antarmuka web."
+
+#: template/sysauth.ut:61
+#: template/sysauth.htm:57
+msgid "Username"
+msgstr "Nama Pengguna"
+
+#: template/header.ut:182
+#: template/header.htm:189
+msgid "You must enable JavaScript in your browser or LuCI will not work properly."
+msgstr "Anda harus mengaktifkan JavaScript di browser agar LuCI berfungsi dengan baik."
