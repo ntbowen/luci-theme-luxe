@@ -341,10 +341,19 @@ body.show-hostname header > .fill > .container .brand.hostname {
     box-shadow: var(--sectionShaddow);
     border-radius: 12px;
     width: 280px;
+    max-height: calc(100vh - 5.5rem);
+    overflow-y: auto;
     padding: 15px;
     z-index: 9999;
     color: var(--textColor);
     text-align: left;
+    /* Glass variants set --sectionbgColor to translucent rgba values (down to
+       fully transparent for glass-crystal); without a backdrop blur the page
+       content bleeds through and the menu becomes unreadable. Reuse each
+       variant's own blur token, falling back to a plain blur for themes that
+       define none. */
+    backdrop-filter: var(--glass-blur, var(--glass-dark-blur, var(--onyx-blur, var(--glaze-blur, blur(16px)))));
+    -webkit-backdrop-filter: var(--glass-blur, var(--glass-dark-blur, var(--onyx-blur, var(--glaze-blur, blur(16px)))));
 }
 .cfg-row {
     margin-bottom: 12px;
