@@ -6,51 +6,40 @@
 
 include $(TOPDIR)/rules.mk
 
-THEME_NAME:=luxe
-THEME_TITLE:=LuxeOs
-PKG_NAME:=luci-theme-$(THEME_NAME)
+# Pin LUCI_NAME: luci.mk defaults it to the checkout's directory name, which
+# would silently derail its per-package hooks when the tree is linked into a
+# buildroot under a different name.
+LUCI_NAME:=luci-theme-luxe
+
+LUCI_TITLE:=LuCI Theme For OpenWrt - LuxeOs
+LUCI_DEPENDS:=+luci-base
+LUCI_PKGARCH:=all
+LUCI_URL:=https://github.com/de-quenx/luci-theme-luxe
+LUCI_MAINTAINER:=xidz_x
+
+# 'id' is not in luci.mk's LUCI_LANG table; declaring it here is what makes
+# po/id/ produce a luci-i18n-luxe-id package at all.
+LUCI_LANG.id:=Bahasa Indonesia (Indonesian)
+
 PKG_VERSION:=2.6.0
 PKG_RELEASE:=07072026
-PKG_MAINTAINER:=xidz_x
+PKG_LICENSE:=Apache-2.0
 
-include $(INCLUDE_DIR)/package.mk
-
-define Package/luci-theme-$(THEME_NAME)
-	SECTION:=luci
-	CATEGORY:=LuCI
-	SUBMENU:=9. Themes
-	DEPENDS:=+libc +luci-base
-	TITLE:=LuCI Theme For OpenWrt - $(THEME_TITLE)
-	URL:=https://github.com/de-quenx/luci-theme-luxe
-	PKGARCH:=all
-endef
-
-define Build/Configure
-endef
-
-define Build/Compile
-endef
-
-define Package/luci-theme-$(THEME_NAME)/install
-	$(INSTALL_DIR) $(1)/etc
-	$(CP) -a ./root/etc/* $(1)/etc/ 2>/dev/null || true
-	$(INSTALL_DIR) $(1)/www/luci-static/$(THEME_NAME)
-	$(CP) -a ./htdocs/luci-static/$(THEME_NAME)/* $(1)/www/luci-static/$(THEME_NAME)/ 2>/dev/null || true
-	$(INSTALL_DIR) $(1)/www/luci-static/resources
-	$(CP) -a ./htdocs/luci-static/resources/* $(1)/www/luci-static/resources/ 2>/dev/null || true
-	$(INSTALL_DIR) $(1)/usr/share/ucode/luci/template/themes/$(THEME_NAME)
-	$(CP) -a ./template/* $(1)/usr/share/ucode/luci/template/themes/$(THEME_NAME)/ 2>/dev/null || true
-endef
-
-define Package/luci-theme-$(THEME_NAME)/postinst
+# Defining a postinst replaces luci.mk's default, so the cache flush and rpcd
+# reload it performs are repeated here after the uci-defaults bootstrap.
+define Package/luci-theme-luxe/postinst
 #!/bin/sh
 if [ -z "$${IPKG_INSTROOT}" ]; then
-	if [ -f /etc/uci-defaults/33_luci-theme-$(THEME_NAME) ]; then
-		. /etc/uci-defaults/33_luci-theme-$(THEME_NAME)
-		rm -f /etc/uci-defaults/33_luci-theme-$(THEME_NAME)
+	if [ -f /etc/uci-defaults/33_luci-theme-luxe ]; then
+		. /etc/uci-defaults/33_luci-theme-luxe
+		rm -f /etc/uci-defaults/33_luci-theme-luxe
 	fi
+	rm -rf /tmp/luci-indexcache* /tmp/luci-modulecache/
+	/etc/init.d/rpcd reload 2>/dev/null
 fi
 exit 0
 endef
 
-$(eval $(call BuildPackage,luci-theme-$(THEME_NAME)))
+include $(TOPDIR)/feeds/luci/luci.mk
+
+# call BuildPackage - OpenWrt buildroot signature
