@@ -336,7 +336,13 @@ body.show-hostname header > .fill > .container .brand.hostname {
     top: 40px;
     left: 50%;
     transform: translateX(-50%);
+    /* Glass variants set --sectionbgColor to translucent rgba values — fully
+       transparent for glass-crystal — so blur alone cannot stop page content
+       bleeding through. Re-declare the background with the variant's own hue
+       forced to near-opaque via relative color syntax; browsers without that
+       syntax keep the translucent value plus the blur below. */
     background: var(--sectionbgColor);
+    background: rgb(from var(--sectionbgColor) r g b / 92%);
     border: var(--sectionBorder);
     box-shadow: var(--sectionShaddow);
     border-radius: 12px;
@@ -347,11 +353,6 @@ body.show-hostname header > .fill > .container .brand.hostname {
     z-index: 9999;
     color: var(--textColor);
     text-align: left;
-    /* Glass variants set --sectionbgColor to translucent rgba values (down to
-       fully transparent for glass-crystal); without a backdrop blur the page
-       content bleeds through and the menu becomes unreadable. Reuse each
-       variant's own blur token, falling back to a plain blur for themes that
-       define none. */
     backdrop-filter: var(--glass-blur, var(--glass-dark-blur, var(--onyx-blur, var(--glaze-blur, blur(16px)))));
     -webkit-backdrop-filter: var(--glass-blur, var(--glass-dark-blur, var(--onyx-blur, var(--glaze-blur, blur(16px)))));
 }
@@ -952,7 +953,12 @@ input.cbi-input-password,
     left: 0;
     right: 0;
     bottom: 0;
+    /* --badgebgColor ranges from near-black on dark themes to ~10% white on
+       glass variants, so the unchecked track can vanish against the panel.
+       Tint it from --textColor instead: it always sits opposite the section
+       background (dark themes get a light track, light themes a dark one). */
     background-color: var(--badgebgColor, #ccc);
+    background-color: color-mix(in srgb, var(--textColor) 26%, transparent);
     transition: 0.4s;
     border-radius: 20px;
     border: var(--inputBorder);
@@ -974,7 +980,8 @@ input.cbi-input-password,
 }
 .luxe-switch input:checked + .luxe-slider:before {
     transform: translateX(20px);
-    background-color: var(--bttextColor);
+    background-color: var(--bttextColor, #fff);
+    box-shadow: 0 0 0 1px var(--sectionbgColor, #000);
 }
 /* Base button shape shared by every LuCI control (form actions, opkg row
  * actions, modal buttons, etc). A soft, low-opacity shadow is layered on top
@@ -2581,7 +2588,10 @@ td > .ifacebadge,
 .icon-card {
     flex: 0 0 auto;
     padding: 6px 14px;
+    /* See .luxe-slider: --badgebgColor can be nearly invisible, so tint the
+       idle card from --textColor for guaranteed contrast with the panel. */
     background: var(--badgebgColor);
+    background: color-mix(in srgb, var(--textColor) 14%, transparent);
     border: var(--inputBorder);
     border-radius: 6px;
     cursor: pointer;
