@@ -33,7 +33,7 @@
     let m = (type(media) == 'string') ? media : '';
 -%}
 <!DOCTYPE html>
-<html lang="en" class="luxe-login-auth">
+<html lang="{{ dispatcher.lang }}" class="luxe-login-auth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -53,7 +53,7 @@
         {% endif %}
         <div class="login_form_container">
             <div class="login_form">
-                <h2 id="hostname" data-text="{{ hostname }}">{{ hostname }}</h2>
+                <h2 id="hostname" data-text="{{ hostname }}" data-welcome="{{ _('Welcome') }}">{{ hostname }}</h2>
                 <div class="date-time">
                     <span id="d"></span> | <span id="t"></span>
                 </div>
